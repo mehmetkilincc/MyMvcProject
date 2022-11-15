@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyMvcProject.Entity
+namespace MyMvcProject.Entity.Concrete
 {
     public class Contact
     {
