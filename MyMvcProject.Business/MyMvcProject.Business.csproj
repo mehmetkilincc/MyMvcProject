@@ -41,7 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\ICategoryService.cs" />
+    <Compile Include="Concrete\CategoryManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyMvcProject.DataAccess\MyMvcProject.DataAccess.csproj">
+      <Project>{8A3DFBC0-1B7A-4CF8-9ADB-A76D5F5E8329}</Project>
+      <Name>MyMvcProject.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyMvcProject.Entity\MyMvcProject.Entity.csproj">
+      <Project>{E64D3693-6563-478D-9019-69FBD0465A71}</Project>
+      <Name>MyMvcProject.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
