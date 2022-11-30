@@ -1,0 +1,23 @@
+﻿
+@{
+    Layout = null;
+}
+<form action="/" method="post"></form>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<form class="form-group" method="post">
+    <label> Kategori Adı : </label> 
+    <br/>
+    <input type="text" name="CategoryName" placeholder="Kategori Adı giriniz" class="form-control" />
+    <br/>
+    <label> Kategori Tanımı : </label>
+    <br/>
+    <input type="text" name="CategoryDescription" placeholder="Kategoriyi tanımlayınız." class="form-control"/>
+    <br/>
+    <label> Kategori Aktif mi ? </label>
+    <br/>
+    <section>
+        <input type="radio" name="CategoryStatus" value="True">Aktif<br>
+        <input type="radio" name="CategoryStatus" value="False">Aktif Değil<br>
+    </section>
+    <button type="submit">Yeni KAtegori Ekle</button>
+</form>

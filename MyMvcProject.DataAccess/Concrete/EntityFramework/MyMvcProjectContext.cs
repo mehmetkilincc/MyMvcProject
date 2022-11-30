@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MyMvcProject.Entity.Concrete;
 
-namespace MyMvcProject.DataAccess.Concrete
+namespace MyMvcProject.DataAccess.Concrete.EntityFramework
 {
     public class MyMvcProjectContext :DbContext
     {

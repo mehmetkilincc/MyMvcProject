@@ -58,14 +58,14 @@
     <Compile Include="Abstract\IEntityRepository.cs" />
     <Compile Include="Abstract\IHeadingDal.cs" />
     <Compile Include="Abstract\IWriterDal.cs" />
-    <Compile Include="Concrete\AboutDal.cs" />
-    <Compile Include="Concrete\CategoryDal.cs" />
-    <Compile Include="Concrete\ContactDal.cs" />
-    <Compile Include="Concrete\ContentDal.cs" />
-    <Compile Include="Concrete\EntityRepositoryBase.cs" />
-    <Compile Include="Concrete\HeadingDal.cs" />
-    <Compile Include="Concrete\MyMvcProjectContext.cs" />
-    <Compile Include="Concrete\WriterDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfAboutDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfCategoryDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfContactDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfContentDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EntityRepositoryBase.cs" />
+    <Compile Include="Concrete\EntityFramework\EfHeadingDal.cs" />
+    <Compile Include="Concrete\EntityFramework\MyMvcProjectContext.cs" />
+    <Compile Include="Concrete\EntityFramework\EfWriterDal.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

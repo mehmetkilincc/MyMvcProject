@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using MyMvcProject.DataAccess.Abstract;
 using MyMvcProject.Entity.Concrete;
 
-namespace MyMvcProject.DataAccess.Concrete
+namespace MyMvcProject.DataAccess.Concrete.EntityFramework
 {
-    public class ContentDal: EntityRepositoryBase<Content,MyMvcProjectContext>, IContentDal
+    public class EfContactDal : EntityRepositoryBase<Contact,MyMvcProjectContext>,IContactDal
     {
     }
 }

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MyMvcProject.DataAccess.Abstract;
 
-namespace MyMvcProject.DataAccess.Concrete
+namespace MyMvcProject.DataAccess.Concrete.EntityFramework
 {
     public class EntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
         where TEntity : class, new()

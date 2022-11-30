@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +6,9 @@ using System.Threading.Tasks;
 using MyMvcProject.DataAccess.Abstract;
 using MyMvcProject.Entity.Concrete;
 
-namespace MyMvcProject.DataAccess.Concrete
+namespace MyMvcProject.DataAccess.Concrete.EntityFramework
 {
-    public class WriterDal:EntityRepositoryBase<Writer,MyMvcProjectContext>,IWriterDal
+    public class EfHeadingDal:EntityRepositoryBase<Heading,MyMvcProjectContext>,IHeadingDal
     {
     }
 }

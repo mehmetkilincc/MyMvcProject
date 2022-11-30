@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+@model  List<MyMvcProject.Entity.Concrete.Category>
+<h2>Category Page</h2>
+<br />
+<table class="table table-hover text-center">
+    <thead>
+    <tr>
+        <th class="text-center">Category Id</th>
+        <th class="text-center">Category Name</th>
+        <th class="text-center">Category Description</th>
+        <th class="text-center">Category Status</th>
+        <th class="text-center">Düzenle</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CategoryId</td>
+            <td>@item.CategoryName</td>
+            <td>@item.CategoryDescription</td>
+            <td>@item.CategoryStatus</td>
+            <td><button class="btn btn-success">Güncelle</button></td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<a href="/Category/AddCategory/" class="btn btn-success"> Yeni Kategori Ekle</a>
+

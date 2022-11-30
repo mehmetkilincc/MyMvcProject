@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyMvcProject.DataAccess.Concrete
+namespace MyMvcProject.DataAccess.Concrete.EntityFramework
 {
-    public class AboutDal : EntityRepositoryBase<About, MyMvcProjectContext>, IAboutDal
+    public class EfAboutDal : EntityRepositoryBase<About, MyMvcProjectContext>, IAboutDal
     {
     }
 }
