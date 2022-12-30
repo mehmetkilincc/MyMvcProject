@@ -1,32 +1,35 @@
-﻿
+﻿@using MyMvcProject.Entity.Concrete
+@model List<Category>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<br/>
-<table class="table table-bordered">
-    <tr>
-        <th>Id</th>
-        <th>Category Name</th>
-        <th>Category Description</th>
-        <th>Category Status</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Phone</td>
-        <td> This is a phone category.</td>
-        <td>Active</td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Computer</td>
-        <td> This is a computer category.</td>
-        <td>Pasive</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>Tablet</td>
-        <td> This is a tablet category.</td>
-        <td>Active</td>
-    </tr>
+<br />
+<table class="table table-bordered text-center">
+    <thead>
+        <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Category Name</th>
+            <th class="text-center">Category Description</th>
+            <th class="text-center">Delete</th>
+            <th class="text-center">Update</th>
+            <th class="text-center">Headings</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.CategoryId</th>
+                <td>@item.CategoryName</td>
+                <td>@item.CategoryDescription</td>
+                <td><a href="/AdminCategory/DeleteCategory/@item.CategoryId" class="btn btn-danger">Delete</a></td>
+                <td><a href="/AdminCategory/EditCategory/@item.CategoryId" class="btn btn-warning">Update</a></td>
+                <td><a href=# class="btn btn-primary">Headings</a></td>
+            </tr>
+        }
+    </tbody>
 </table>
+
+<a href="/AdminCategory/AddCategory/" class="btn btn-success">Add New Category</a>

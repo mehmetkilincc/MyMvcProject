@@ -23,6 +23,11 @@ namespace MyMvcProject.Business.Concrete
             return _categoryDal.GetAll();
         }
 
+        public Category GetById(int id)
+        {
+            return _categoryDal.Get(x=>x.CategoryId==id);
+        }
+
         public void Add(Category category)
         {
             

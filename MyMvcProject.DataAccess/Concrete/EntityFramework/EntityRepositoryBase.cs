@@ -10,7 +10,7 @@ using MyMvcProject.DataAccess.Abstract;
 namespace MyMvcProject.DataAccess.Concrete.EntityFramework
 {
     public class EntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
-        where TEntity : class, new()
+        where TEntity : class
         where TContext : DbContext, new()
     {
 
@@ -24,7 +24,18 @@ namespace MyMvcProject.DataAccess.Concrete.EntityFramework
 
         public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter)
         {
-            throw new NotImplementedException();
+            using (TContext context = new TContext())
+            {
+                return (context.Set<TEntity>().Where(filter).ToList());
+            }
+        }
+
+        public TEntity Get(Expression<Func<TEntity, bool>> filter)
+        {
+            using(TContext context = new TContext())
+            {
+                return context.Set<TEntity>().SingleOrDefault(filter);
+            }
         }
 
         public void Add(TEntity entity)

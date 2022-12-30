@@ -11,6 +11,7 @@ namespace MyMvcProject.DataAccess.Abstract
     {
         List<TEntity> GetAll();
         List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter);
+        TEntity Get(Expression<Func<TEntity,bool>>filter);
         void Add(TEntity entity);
         void Update(TEntity entity);
         void Delete(TEntity entity);
