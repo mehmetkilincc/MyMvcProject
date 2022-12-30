@@ -25,6 +25,7 @@ namespace MyMvcProject.Business.Concrete
 
         public void Add(Category category)
         {
+            
             _categoryDal.Add(category);
         }
 

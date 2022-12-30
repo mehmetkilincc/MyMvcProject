@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using FluentValidation.Results;
 using MyMvcProject.Business.Abstract;
 using MyMvcProject.Business.Concrete;
+using MyMvcProject.Business.ValidationRules.FluentValidation;
 using MyMvcProject.DataAccess.Concrete.EntityFramework;
 using MyMvcProject.Entity.Concrete;
 
@@ -27,7 +29,6 @@ namespace MyMvcProject.UI.Controllers
             return View(categoryList);
         }
 
-
         [HttpGet]
         public ActionResult AddCategory()
         {
@@ -38,8 +39,22 @@ namespace MyMvcProject.UI.Controllers
         [HttpPost]
         public ActionResult AddCategory(Category category)
         {
-            _categoryService.Add(category);
-            return RedirectToAction("GetCategoryList","Category");
+            CategoryValidator categoryValidator = new CategoryValidator();
+            ValidationResult results = categoryValidator.Validate(category);
+            if (results.IsValid)
+            {
+                _categoryService.Add(category);
+                return RedirectToAction("GetCategoryList", "Category");
+            }
+            else
+            {
+                foreach (var error in results.Errors)
+                {
+                    ModelState.AddModelError(error.PropertyName,error.ErrorMessage);
+                }
+            }
+
+            return View();
         }
     }
 }
