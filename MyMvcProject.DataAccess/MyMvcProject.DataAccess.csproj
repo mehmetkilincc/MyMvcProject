@@ -66,6 +66,14 @@
     <Compile Include="Concrete\EntityFramework\EfHeadingDal.cs" />
     <Compile Include="Concrete\EntityFramework\MyMvcProjectContext.cs" />
     <Compile Include="Concrete\EntityFramework\EfWriterDal.cs" />
+    <Compile Include="Migrations\202212302226204_mig_writer_edit.cs" />
+    <Compile Include="Migrations\202212302226204_mig_writer_edit.designer.cs">
+      <DependentUpon>202212302226204_mig_writer_edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301011255210_mig-writerTitle_add.cs" />
+    <Compile Include="Migrations\202301011255210_mig-writerTitle_add.designer.cs">
+      <DependentUpon>202301011255210_mig-writerTitle_add.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -79,7 +87,14 @@
       <Name>MyMvcProject.Entity</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202212302226204_mig_writer_edit.resx">
+      <DependentUpon>202212302226204_mig_writer_edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301011255210_mig-writerTitle_add.resx">
+      <DependentUpon>202301011255210_mig-writerTitle_add.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
