@@ -18,15 +18,12 @@ namespace MyMvcProject.DataAccess.Concrete.EntityFramework
         {
             TContext context = new TContext();
             return context.Set<TEntity>().ToList();
-
         }
 
         public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter)
         {
-            using (TContext context = new TContext())
-            {
-                return (context.Set<TEntity>().Where(filter).ToList());
-            }
+            TContext context = new TContext();
+            return (context.Set<TEntity>().Where(filter).ToList());
         }
 
         public TEntity Get(Expression<Func<TEntity, bool>> filter)

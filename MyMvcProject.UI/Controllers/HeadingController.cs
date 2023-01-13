@@ -15,7 +15,7 @@ namespace MyMvcProject.UI.Controllers
 {
     public class HeadingController : Controller
     {
-        private IHeadingService _headingService = new HeadingManager(new EfHeadingDal());
+        private readonly IHeadingService _headingService = new HeadingManager(new EfHeadingDal());
         private readonly ICategoryService _categoryService = new CategoryManager(new EfCategoryDal());
         private readonly IWriterService _writerService = new WriterManager(new EfWriterDal());
         private HeadingValidator HeadingValidator = new HeadingValidator();
@@ -65,6 +65,11 @@ namespace MyMvcProject.UI.Controllers
             return View();
         }
 
+        public ActionResult ContentByHeading()
+        {
+
+            return View();
+        }
 
     }
 }
