@@ -23,7 +23,7 @@ namespace MyMvcProject.Entity.Concrete
         [StringLength(50)]
         public string WriterTitle { get; set; }
 
-        [StringLength(100)]
+        [StringLength(250)]
         public string WriterImage { get; set; }
 
         [StringLength(150)]
