@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Web;
 using System.Web.Mvc;
 using FluentValidation.Results;
@@ -28,21 +29,21 @@ namespace MyMvcProject.UI.Controllers
         [HttpGet]
         public ActionResult AddHeading()
         {
-            List<SelectListItem> category = (from x in _categoryService.GetAll()
-                                             select new SelectListItem()
-                                             {
-                                                 Text = x.CategoryName,
-                                                 Value = x.CategoryId.ToString()
-                                             }).ToList();
-            ViewBag.category = category;
+            List<SelectListItem> categories = (from x in _categoryService.GetAll()
+                                               select new SelectListItem()
+                                               {
+                                                   Text = x.CategoryName,
+                                                   Value = x.CategoryId.ToString()
+                                               }).ToList();
+            ViewBag.categories = categories;
 
-            List<SelectListItem> writer = (from x in _writerService.GetAll()
-                                           select new SelectListItem()
-                                           {
-                                               Text = x.WriterName + " " + x.WriterSurname,
-                                               Value = x.WriterId.ToString()
-                                           }).ToList();
-            ViewBag.writer = writer;
+            List<SelectListItem> writers = (from x in _writerService.GetAll()
+                                            select new SelectListItem()
+                                            {
+                                                Text = x.WriterName + " " + x.WriterSurname,
+                                                Value = x.WriterId.ToString()
+                                            }).ToList();
+            ViewBag.writers = writers;
             return View();
         }
 
@@ -65,11 +66,35 @@ namespace MyMvcProject.UI.Controllers
             return View();
         }
 
-        public ActionResult ContentByHeading()
+        [HttpGet]
+        public ActionResult EditHeading(int id)
         {
+            List<SelectListItem> categories = (from x in _categoryService.GetAll()
+                                               select new SelectListItem
+                                               {
+                                                   Text = x.CategoryName,
+                                                   Value = x.CategoryId.ToString()
+                                               }).ToList();
+            ViewBag.categories = categories;
 
-            return View();
+            var heading = _headingService.GetById(id);
+            return View(heading);
         }
 
+        [HttpPost]
+        public ActionResult EditHeading(Heading heading)
+        {
+            _headingService.Update(heading);
+            return RedirectToAction("Index", "Heading");
+        }
+
+        public ActionResult DeleteHeading(int id)
+        {
+            var heading = _headingService.GetById(id);
+
+            heading.HeadingStatus = heading.HeadingStatus ? false:true;
+            _headingService.Delete(heading);
+            return RedirectToAction("Index", "Heading");
+        }
     }
 }

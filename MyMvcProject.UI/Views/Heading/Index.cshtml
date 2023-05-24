@@ -5,6 +5,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 <!DOCTYPE html>
 <html>
 <body class="hold-transition sidebar-mini">
@@ -43,8 +44,11 @@
                             <th style="width: 20%">
                                 Heading Name
                             </th>
-                            <th style="width: 30%">
+                            <th style="width: 12%">
                                 Writer
+                            </th>
+                            <th style="width: 10%">
+                                Status
                             </th>
                             <th style="width: 8%" class="text-center">
                                 Category
@@ -76,8 +80,17 @@
                                         </li>
                                     </ul>
                                 </td>
+                                <td>
+                                    @switch (@item.HeadingStatus)
+                                    {
+                                        case true:<span class="badge badge-success">Active</span>
+                                            break;
+                                        case false: <span class="badge badge-danger">Pasive</span>
+                                            break;
+                                    }
+                                </td>
                                 <td class="project-state">
-                                    <span class="badge badge-success">Success</span>
+                                    <span class="badge badge-success">@item.Category.CategoryName</span>
                                 </td>
                                 <td class="project-actions text-right">
                                     <a class="btn btn-primary btn-sm" href="/Content/ContentByHeading/@item.HeadingId">
@@ -85,16 +98,29 @@
                                         </i>
                                         Contents
                                     </a>
-                                    <a class="btn btn-info btn-sm" href="#">
+                                    <a class="btn btn-info btn-sm" href="/Heading/EditHeading/@item.HeadingId">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         Edit
                                     </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
+                                    @switch (@item.HeadingStatus)
+                                    {
+                                        case true:
+                                            <a class="btn btn-danger btn-sm" href="/Heading/DeleteHeading/@item.HeadingId">
+                                                <i class="fas fa-trash">
+                                                </i>
+                                                Make Pasive
+                                            </a>
+                                            break;
+
+                                        case false:
+                                            <a class="btn btn-success btn-sm" href="/Heading/DeleteHeading/@item.HeadingId">
+                                                <i class="fas fa-trash">
+                                                </i>
+                                                Make Aktive
+                                            </a>
+                                            break;
+                                    }
                                 </td>
                             </tr>
                         }
@@ -108,6 +134,7 @@
 </body>
 </html>
 <a class="btn btn-primary" href="/Heading/AddHeading/">Add New Heading</a>
+<a class="btn btn-danger">Salak Haci</a>
 
 @*<h2>Heading Page</h2>
 
@@ -118,7 +145,7 @@
             <th>Category Name</th>
         </tr>
         @foreach (var item in Model)
-        {
+                                    {
             <tr>
                 <td>@item.HeadingId</td>
                 <td>@item.HeadingName</td>

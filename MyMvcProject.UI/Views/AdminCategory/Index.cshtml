@@ -6,30 +6,36 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <br />
-<table class="table table-bordered text-center">
-    <thead>
-        <tr>
-            <th class="text-center">#</th>
-            <th class="text-center">Category Name</th>
-            <th class="text-center">Category Description</th>
-            <th class="text-center">Delete</th>
-            <th class="text-center">Update</th>
-            <th class="text-center">Headings</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <th>@item.CategoryId</th>
-                <td>@item.CategoryName</td>
-                <td>@item.CategoryDescription</td>
-                <td><a href="/AdminCategory/DeleteCategory/@item.CategoryId" class="btn btn-danger">Delete</a></td>
-                <td><a href="/AdminCategory/EditCategory/@item.CategoryId" class="btn btn-warning">Update</a></td>
-                <td><a href=# class="btn btn-primary">Headings</a></td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-<a href="/AdminCategory/AddCategory/" class="btn btn-success">Add New Category</a>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title text-center">Categories</h3>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-striped projects">
+            <thead>
+                <tr class="text-center">
+                    <th>#</th>
+                    <th>Category Name</th>
+                    <th>Category Description</th>
+                    <th>Delete</th>
+                    <th>Update</th>
+                    <th>Headings</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="text-center">
+                        <th>@item.CategoryId</th>
+                        <td>@item.CategoryName</td>
+                        <td>@item.CategoryDescription</td>
+                        <td><a href="/AdminCategory/DeleteCategory/@item.CategoryId" class="btn btn-danger">Delete</a></td>
+                        <td><a href="/AdminCategory/EditCategory/@item.CategoryId" class="btn btn-warning">Update</a></td>
+                        <td><a href=# class="btn btn-primary">Headings</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<a href="/AdminCategory/AddCategory/" class="btn btn-outline-dark btn-block">Add New Category</a>

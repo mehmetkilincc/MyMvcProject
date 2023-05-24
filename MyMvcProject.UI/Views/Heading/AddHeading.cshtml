@@ -14,10 +14,10 @@
         @Html.ValidationMessageFor(x=>x.HeadingName,"",new{@class="text-danger"})
         <br />
         @Html.Label("Category Name")
-        @Html.DropDownListFor(x=>x.CategoryId,(List<SelectListItem>)ViewBag.category,  new{@class="form-control"})
+        @Html.DropDownListFor(x=>x.CategoryId,(List<SelectListItem>)ViewBag.categories,  new{@class="form-control"})
         <br />
         @Html.Label("Writer Name")
-        @Html.DropDownListFor(x=>x.WriterId,(List<SelectListItem>)ViewBag.writer, new {@class="form-control"})
+        @Html.DropDownListFor(x=>x.WriterId,(List<SelectListItem>)ViewBag.writers, new {@class="form-control"})
         @Html.ValidationMessageFor(x=>x.WriterId,"",new {@class="text-danger"})
         <br />
     </div>

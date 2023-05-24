@@ -9,7 +9,7 @@ using MyMvcProject.Entity.Concrete;
 
 namespace MyMvcProject.Business.Concrete
 {
-    public class HeadingManager:IHeadingService
+    public class HeadingManager : IHeadingService
     {
         private readonly IHeadingDal _headingDal;
 
@@ -40,7 +40,7 @@ namespace MyMvcProject.Business.Concrete
 
         public void Delete(Heading heading)
         {
-            _headingDal.Delete(heading);
+            _headingDal.Update(heading);
         }
     }
 }
