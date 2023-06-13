@@ -36,12 +36,10 @@ namespace MyMvcProject.DataAccess.Concrete.EntityFramework
 
         public void Add(TEntity entity)
         {
-            using (TContext context = new TContext())
-            {
-                var entyEntity = context.Entry(entity);
-                entyEntity.State = EntityState.Added;
-                context.SaveChanges();
-            }
+            TContext context = new TContext();
+            var entyEntity = context.Entry(entity);
+            entyEntity.State = EntityState.Added;
+            context.SaveChanges();
         }
 
         public void Update(TEntity entity)

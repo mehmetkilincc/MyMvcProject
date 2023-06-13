@@ -12,8 +12,8 @@ namespace MyMvcProject.Business.ValidationRules.FluentValidation
     {
         public HeadingValidator()
         {
-            RuleFor(x => x.HeadingName).NotEmpty().WithMessage("Heading name cannot be blank!");
-            RuleFor(x => x.CategoryId).NotEmpty().WithMessage("Category Name cannot be empty!");
+            //RuleFor(x => x.HeadingName).NotEmpty().WithMessage("Heading name cannot be blank!");
+            //RuleFor(x => x.CategoryId).NotEmpty().WithMessage("Category Name cannot be empty!");
 
         }
     }

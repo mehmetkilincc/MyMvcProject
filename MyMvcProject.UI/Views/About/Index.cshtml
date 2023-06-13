@@ -6,28 +6,33 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">About Us Title</th>
-            <th scope="col">Make Active</th>
-            <th scope="col">Make Pasive</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.AboutId</td>
-                <td>@item.AboutDetails1</td>
-                <td><a class="btn btn-success" href="#" role="button">Make Active</a></td>
-                <td><a class="btn btn-danger" href="#" role="button">Make Pasive</a></td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-@Html.Action("AboutPartial", "About");
+<br />
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title text-center">About Us Operations</h3>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">About Us Title</th>
+                    <th scope="col">Make Active</th>
+                    <th scope="col">Make Pasive</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.AboutId</td>
+                        <td>@item.AboutDetails1</td>
+                        <td><a class="btn btn-success" href="#" role="button">Make Active</a></td>
+                        <td><a class="btn btn-danger" href="#" role="button">Make Pasive</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@Html.Action("AboutPartial", "About")

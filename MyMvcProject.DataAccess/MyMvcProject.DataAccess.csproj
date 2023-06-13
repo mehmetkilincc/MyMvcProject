@@ -57,11 +57,13 @@
     <Compile Include="Abstract\IContentDal.cs" />
     <Compile Include="Abstract\IEntityRepository.cs" />
     <Compile Include="Abstract\IHeadingDal.cs" />
+    <Compile Include="Abstract\IMessageDal.cs" />
     <Compile Include="Abstract\IWriterDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfAboutDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfCategoryDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfContactDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfContentDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfMessageDal.cs" />
     <Compile Include="Concrete\EntityFramework\EntityRepositoryBase.cs" />
     <Compile Include="Concrete\EntityFramework\EfHeadingDal.cs" />
     <Compile Include="Concrete\EntityFramework\MyMvcProjectContext.cs" />
@@ -85,6 +87,14 @@
     <Compile Include="Migrations\202301141959103_mig_headingStatus_add.cs" />
     <Compile Include="Migrations\202301141959103_mig_headingStatus_add.designer.cs">
       <DependentUpon>202301141959103_mig_headingStatus_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305311729333_mig_add_message_class.cs" />
+    <Compile Include="Migrations\202305311729333_mig_add_message_class.designer.cs">
+      <DependentUpon>202305311729333_mig_add_message_class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306112316054_mig_add_contactDate.cs" />
+    <Compile Include="Migrations\202306112316054_mig_add_contactDate.designer.cs">
+      <DependentUpon>202306112316054_mig_add_contactDate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -114,6 +124,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301141959103_mig_headingStatus_add.resx">
       <DependentUpon>202301141959103_mig_headingStatus_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305311729333_mig_add_message_class.resx">
+      <DependentUpon>202305311729333_mig_add_message_class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306112316054_mig_add_contactDate.resx">
+      <DependentUpon>202306112316054_mig_add_contactDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

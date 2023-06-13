@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>AddHeading</h2>
+<h2>Add New Heading</h2>
 
 @using (Html.BeginForm("AddHeading","Heading",FormMethod.Post))
 {
@@ -20,6 +20,7 @@
         @Html.DropDownListFor(x=>x.WriterId,(List<SelectListItem>)ViewBag.writers, new {@class="form-control"})
         @Html.ValidationMessageFor(x=>x.WriterId,"",new {@class="text-danger"})
         <br />
+        <button class="btn btn-outline-dark btn-block">Add Heading</button>
     </div>
 }
 

@@ -53,6 +53,7 @@ namespace MyMvcProject.UI.Controllers
             ValidationResult result = HeadingValidator.Validate(heading);
             if (result.IsValid)
             {
+                heading.HeadingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
                 _headingService.Add(heading);
                 return RedirectToAction("Index", "Heading");
             }

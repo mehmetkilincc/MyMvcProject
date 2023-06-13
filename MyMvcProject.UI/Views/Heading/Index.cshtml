@@ -6,34 +6,27 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini">-->
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+    <!--<section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
                 </div>
             </div>
-        </div><!-- /.container-fluid -->
-    </section>
+        </div>--><!-- /.container-fluid -->
+    <!--</section>-->
     <!-- Main content -->
-    <section class="content">
+    <!--<section class="content">-->
         <!-- Default box -->
+<br />
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Heading Operations</h3>
-
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
             </div>
+
             <div class="card-body p-0">
                 <table class="table table-striped projects">
                     <thead>
@@ -130,27 +123,7 @@
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
-    </section>
+    @*</section>
 </body>
-</html>
-<a class="btn btn-primary" href="/Heading/AddHeading/">Add New Heading</a>
-<a class="btn btn-danger">Salak Haci</a>
-
-@*<h2>Heading Page</h2>
-
-    <table class="table table-bordered">
-        <tr>
-            <th>#</th>
-            <th>Heading Name</th>
-            <th>Category Name</th>
-        </tr>
-        @foreach (var item in Model)
-                                    {
-            <tr>
-                <td>@item.HeadingId</td>
-                <td>@item.HeadingName</td>
-                <td>@item.Category.CategoryName</td>
-            </tr>
-        }
-    </table>
-    <a href="/Heading/AddHeading/" class="btn btn-info">Add New Heading</a>*@
+</html>*@
+<a href="/Heading/AddHeading/" class="btn btn-outline-dark btn-block">Add New Heading</a>
