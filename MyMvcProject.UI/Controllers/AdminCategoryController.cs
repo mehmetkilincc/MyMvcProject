@@ -15,7 +15,7 @@ namespace MyMvcProject.UI.Controllers
     {
         private CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
 
-        // GET: AdminCategory
+        [Authorize(Roles ="B")]
         public ActionResult Index()
         {
             var categoryList = categoryManager.GetAll();

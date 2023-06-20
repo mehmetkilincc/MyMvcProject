@@ -16,6 +16,7 @@ namespace MyMvcProject.UI.Controllers
     {
         private readonly ICategoryService _categoryService = new CategoryManager(new EfCategoryDal());
         // GET: Category
+  
         public ActionResult Index()
         {
             var categories = _categoryService.GetAll();
