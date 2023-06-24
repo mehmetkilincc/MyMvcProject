@@ -12,25 +12,48 @@ namespace MyMvcProject.UI.Controllers
     public class LoginController : Controller
     {
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Admin()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Index(Admin admin)
+        public ActionResult Admin(Admin admin)
         {
             MyMvcProjectContext context = new MyMvcProjectContext();
-            var adminIfo = context.Admins.FirstOrDefault(p=>p.UserName == admin.UserName && p.Password == admin.Password);
+            var adminIfo = context.Admins.FirstOrDefault(p => p.UserName == admin.UserName && p.Password == admin.Password);
             if (adminIfo != null)
             {
                 FormsAuthentication.SetAuthCookie(adminIfo.UserName, false);
-                Session["Username"]=adminIfo.UserName;
+                Session["Username"] = adminIfo.UserName;
                 return RedirectToAction("Index", "AdminCategory");
             }
             else
             {
-                return RedirectToAction("Index","Login");
+                return RedirectToAction("Admin", "Login");
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Writer()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Writer(Writer writer)
+        {
+
+            MyMvcProjectContext context = new MyMvcProjectContext();
+            var writerInfo = context.Writers.FirstOrDefault(p => p.WriterMail == writer.WriterMail && p.WriterPassword == writer.WriterPassword);
+            if (writerInfo != null)
+            {
+                FormsAuthentication.SetAuthCookie(writerInfo.WriterMail, false);
+                Session["WriterMail"] = writerInfo.WriterMail;
+                return RedirectToAction("MyContent", "WriterPanelContent");
+            }
+            else
+            {
+                return RedirectToAction("Writer", "Login");
             }
         }
     }

@@ -46,7 +46,6 @@ namespace MyMvcProject.UI.Controllers
                 }
             }
             return View();
-
         }
 
         [HttpGet]
