@@ -9,6 +9,7 @@ using System.Web.Security;
 
 namespace MyMvcProject.UI.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         [HttpGet]

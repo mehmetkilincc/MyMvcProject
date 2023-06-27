@@ -22,9 +22,9 @@ namespace MyMvcProject.Business.Concrete
         {
             return _headingDal.GetAll();
         }
-        public List<Heading> GetAllByWriter()
+        public List<Heading> GetAllByWriterId(int id)
         {
-            return _headingDal.GetAll(heading => heading.WriterId == 1);
+            return _headingDal.GetAll(heading => heading.WriterId == id);
         }
 
         public Heading GetById(int id)

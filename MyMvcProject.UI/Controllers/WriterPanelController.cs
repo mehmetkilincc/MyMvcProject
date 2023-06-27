@@ -13,19 +13,23 @@ namespace MyMvcProject.UI.Controllers
     public class WriterPanelController : Controller
     {
         HeadingManager _headingManager = new HeadingManager(new EfHeadingDal());
-        CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
+        CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal()); 
+        MyMvcProjectContext context = new MyMvcProjectContext();
+
         public ActionResult WriterProfile()
         {
             return View();
         }
-        [HttpGet]
-        public ActionResult MyHeadings()
+ 
+        public ActionResult MyHeadings(string sessionInfo)
         {
-            var headings = _headingManager.GetAllByWriter();
+            
+            sessionInfo = (string)Session["WriterMail"];
+            var writerId = context.Writers.Where(p=>p.WriterMail == sessionInfo).Select(y=>y.WriterId).FirstOrDefault();
+            var headings = _headingManager.GetAllByWriterId(writerId);
             return View(headings);
         }
 
-        [HttpGet]
         public ActionResult NewHeading()
         {
             List<SelectListItem> categories = (from x in _categoryManager.GetAll()
@@ -41,8 +45,10 @@ namespace MyMvcProject.UI.Controllers
         [HttpPost]
         public ActionResult NewHeading(Heading heading)
         {
+            var sessionInfo = (string)Session["WriterMail"];
+            var writerId = context.Writers.Where(p => p.WriterMail == sessionInfo).Select(y => y.WriterId).FirstOrDefault();
             heading.HeadingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-            heading.WriterId = 1;
+            heading.WriterId = writerId;
             heading.HeadingStatus = true;
             _headingManager.Add(heading);
             return RedirectToAction("MyHeadings", "WriterPanel");

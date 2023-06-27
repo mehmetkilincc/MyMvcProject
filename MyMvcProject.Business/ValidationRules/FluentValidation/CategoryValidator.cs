@@ -16,8 +16,7 @@ namespace MyMvcProject.Business.ValidationRules.FluentValidation
                 .MinimumLength(3).WithMessage("Kategori adı minimum 3 karakter olmalıdır!")
                 .MaximumLength(20).WithMessage("Kategori adı maksimum 20 karakter olabilir!");
 
-            RuleFor(category => category.CategoryDescription).NotEmpty().WithMessage("Kategori tanımı Boş Geçilemez");
-
+            RuleFor(category => category.CategoryDescription).NotEmpty().WithMessage("Kategori tanımı Boş Geçilemez").EmailAddress();
         }
     }
 }

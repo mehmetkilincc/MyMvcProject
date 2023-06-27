@@ -14,9 +14,12 @@ namespace MyMvcProject.UI.Controllers
         private readonly IContentService _contentService = new ContentManager(new EfContentDal());
 
         [HttpGet]
-        public ActionResult MyContent()
+        public ActionResult MyContent(string sessionInfo)
         {
-            var contents = _contentService.GetAllByWriter();
+            MyMvcProjectContext context = new MyMvcProjectContext();
+            sessionInfo = (string)Session["WriterMail"];
+            var writerId = context.Writers.Where(p => p.WriterMail == sessionInfo).Select(y => y.WriterId).FirstOrDefault();
+            var contents = _contentService.GetAllByWriterId(writerId);
             return View(contents);
         }
     }
