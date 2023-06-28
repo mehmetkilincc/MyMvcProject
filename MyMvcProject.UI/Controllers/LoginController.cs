@@ -57,5 +57,12 @@ namespace MyMvcProject.UI.Controllers
                 return RedirectToAction("Writer", "Login");
             }
         }
+
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Headings", "Main");
+        }
     }
 }

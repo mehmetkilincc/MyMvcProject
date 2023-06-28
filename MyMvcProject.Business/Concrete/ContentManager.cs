@@ -19,7 +19,7 @@ namespace MyMvcProject.Business.Concrete
 
         public List<Content> GetAll()
         {
-            throw new NotImplementedException();
+            return _contentDal.GetAll();
         }
         public List<Content> GetAllByWriterId(int id)
         {
@@ -38,7 +38,7 @@ namespace MyMvcProject.Business.Concrete
 
         public void Add(Content content)
         {
-            throw new NotImplementedException();
+            _contentDal.Add(content);
         }
 
         public void Update(Content content)

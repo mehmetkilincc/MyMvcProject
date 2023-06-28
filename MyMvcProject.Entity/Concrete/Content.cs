@@ -17,7 +17,7 @@ namespace MyMvcProject.Entity.Concrete
 
         public DateTime ContentDate { get; set; }
 
-
+        public bool Status { get; set; }
         public int HeadingId { get; set; }
         public virtual Heading Heading { get; set; }
 
