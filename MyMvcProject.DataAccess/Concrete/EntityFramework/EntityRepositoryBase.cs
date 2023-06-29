@@ -10,32 +10,32 @@ using MyMvcProject.Entity.Abstract;
 
 namespace MyMvcProject.DataAccess.Concrete.EntityFramework
 {
-    public class EntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
-        where TEntity : class , IEntity, new()
+    public class EntityRepositoryBase<T, TContext> : IEntityRepository<T>
+        where T : class, IEntity, new()
         where TContext : DbContext, new()
     {
 
-        public List<TEntity> GetAll()
+        public List<T> GetAll()
         {
             TContext context = new TContext();
-            return context.Set<TEntity>().ToList();
+            return context.Set<T>().ToList();
         }
 
-        public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter)
+        public List<T> GetAll(Expression<Func<T, bool>> filter)
         {
             TContext context = new TContext();
-            return (context.Set<TEntity>().Where(filter).ToList());
+            return (context.Set<T>().Where(filter).ToList());
         }
 
-        public TEntity Get(Expression<Func<TEntity, bool>> filter)
+        public T Get(Expression<Func<T, bool>> filter)
         {
             using (TContext context = new TContext())
             {
-                return context.Set<TEntity>().SingleOrDefault(filter);
+                return context.Set<T>().SingleOrDefault(filter);
             }
         }
 
-        public void Add(TEntity entity)
+        public void Add(T entity)
         {
             TContext context = new TContext();
             var entyEntity = context.Entry(entity);
@@ -43,7 +43,7 @@ namespace MyMvcProject.DataAccess.Concrete.EntityFramework
             context.SaveChanges();
         }
 
-        public void Update(TEntity entity)
+        public void Update(T entity)
         {
             using (TContext context = new TContext())
             {
@@ -53,7 +53,7 @@ namespace MyMvcProject.DataAccess.Concrete.EntityFramework
             }
         }
 
-        public void Delete(TEntity entity)
+        public void Delete(T entity)
         {
             using (TContext context = new TContext())
             {

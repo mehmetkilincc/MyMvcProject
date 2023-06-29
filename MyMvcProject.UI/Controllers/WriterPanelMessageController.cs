@@ -20,12 +20,16 @@ namespace MyMvcProject.UI.Controllers
         [HttpGet]
         public ActionResult Inbox()
         {
-            var inboxMessages = _messageService.GetAllInbox();
+            string receiverMail = (string)Session["WriterMail"];
+            var inboxMessages = _messageService.GetAllInbox(receiverMail);
             return View(inboxMessages);
         }
+
+        [HttpGet]
         public ActionResult SendBox()
         {
-            var sendboxMessages = _messageService.GetAllSendbox();
+            string senderMail = (string)Session["WriterMail"];
+            var sendboxMessages = _messageService.GetAllSendbox(senderMail);
             return View(sendboxMessages);
         }
         public PartialViewResult MessageListMenu()
@@ -53,10 +57,11 @@ namespace MyMvcProject.UI.Controllers
         [HttpPost]
         public ActionResult Create(Message message)
         {
+            string senderMail = (String)Session["WriterMail"];
             ValidationResult result = messageValidator.Validate(message);
             if (result.IsValid)
             {
-                message.SenderMail = "admin@admin.com";
+                message.SenderMail = senderMail;
                 message.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
                 _messageService.Add(message);
                 return RedirectToAction("SendBox", "WriterPanelMessage");

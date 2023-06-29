@@ -29,14 +29,14 @@ namespace MyMvcProject.Business.Concrete
             throw new NotImplementedException();
         }
 
-        public List<Message> GetAllInbox()
+        public List<Message> GetAllInbox(string receiverMail)
         {
-            return _messageDal.GetAll(message => message.ReceiverMail == "admin@admin.com");
+            return _messageDal.GetAll(message => message.ReceiverMail == receiverMail);
         }
 
-        public List<Message> GetAllSendbox()
+        public List<Message> GetAllSendbox(string senderMail)
         {
-            return _messageDal.GetAll(message => message.SenderMail == "admin@admin.com");
+            return _messageDal.GetAll(message => message.SenderMail == senderMail);
         }
 
         public Message GetById(int id)

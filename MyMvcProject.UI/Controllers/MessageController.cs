@@ -15,30 +15,32 @@ namespace MyMvcProject.UI.Controllers
 {
     public class MessageController : Controller
     {
-        MessageManager messageManager = new MessageManager(new EfMessageDal());
+        private readonly IMessageService _messageService = new MessageManager(new EfMessageDal());
         MessageValidator messageValidator = new MessageValidator();
 
         [Authorize]
         public ActionResult Inbox()
         {
-            var inboxMessages = messageManager.GetAllInbox();
+            string receiverMail = (string)Session["WriterMail"];
+            var inboxMessages = _messageService.GetAllInbox(receiverMail);
             return View(inboxMessages);
         }
 
         public ActionResult SendBox()
         {
-            var sendboxMessages = messageManager.GetAllSendbox();
+            string senderMail = (string)Session["WriterMail"];
+            var sendboxMessages = _messageService.GetAllSendbox(senderMail);
             return View(sendboxMessages);
         }
         public ActionResult GetInboxMessageDetails(int id)
         {
-            var message = messageManager.GetById(id);
+            var message = _messageService.GetById(id);
             return View(message);
         }
 
         public ActionResult GetSendBoxMessageDetails(int id)
         {
-            var message = messageManager.GetById(id);
+            var message = _messageService.GetById(id);
             return View(message);
         }
 
@@ -55,7 +57,7 @@ namespace MyMvcProject.UI.Controllers
             if (result.IsValid)
             {
                 message.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-                messageManager.Add(message);
+                _messageService.Add(message);
                 return RedirectToAction("Index", "Message");
             }
             else
