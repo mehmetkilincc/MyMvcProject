@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyMvcProject.Entity.Abstract;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyMvcProject.Entity.Concrete
 {
-    public class About
+    public class About : IEntity
     {
         [Key]
         public int AboutId { get; set; }

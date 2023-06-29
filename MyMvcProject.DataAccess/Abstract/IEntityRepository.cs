@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyMvcProject.Entity.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace MyMvcProject.DataAccess.Abstract
 {
-    public interface IEntityRepository<TEntity>
+    public interface IEntityRepository<T> where T : class, IEntity, new()
     {
-        List<TEntity> GetAll();
-        List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter);
-        TEntity Get(Expression<Func<TEntity,bool>>filter);
-        void Add(TEntity entity);
-        void Update(TEntity entity);
-        void Delete(TEntity entity);
+        List<T> GetAll();
+        List<T> GetAll(Expression<Func<T, bool>> filter);
+        T Get(Expression<Func<T, bool>> filter);
+        void Add(T entity);
+        void Update(T entity);
+        void Delete(T entity);
     }
 }

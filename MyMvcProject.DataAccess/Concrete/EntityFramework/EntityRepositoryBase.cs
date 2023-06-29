@@ -6,11 +6,12 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using MyMvcProject.DataAccess.Abstract;
+using MyMvcProject.Entity.Abstract;
 
 namespace MyMvcProject.DataAccess.Concrete.EntityFramework
 {
     public class EntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
-        where TEntity : class
+        where TEntity : class , IEntity, new()
         where TContext : DbContext, new()
     {
 
