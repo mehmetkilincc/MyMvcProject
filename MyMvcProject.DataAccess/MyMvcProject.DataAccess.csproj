@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IAboutRepository.cs" />
+    <Compile Include="Abstract\IAdminRepository.cs" />
     <Compile Include="Abstract\ICategoryRepository.cs" />
     <Compile Include="Abstract\IContactRepository.cs" />
     <Compile Include="Abstract\IContentRepository.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Abstract\IMessageRepository.cs" />
     <Compile Include="Abstract\IWriterRepository.cs" />
     <Compile Include="Concrete\EntityFramework\EfAboutRepository.cs" />
+    <Compile Include="Concrete\EntityFramework\EfAdminRepository.cs" />
     <Compile Include="Concrete\EntityFramework\EfCategoryRepository.cs" />
     <Compile Include="Concrete\EntityFramework\EfContactRepository.cs" />
     <Compile Include="Concrete\EntityFramework\EfContentRepository.cs" />

@@ -1,5 +1,6 @@
-﻿using MyMvcProject.DataAccess.Concrete.EntityFramework;
-using MyMvcProject.DataAccess.Data;
+﻿using MyMvcProject.Business.Abstract;
+using MyMvcProject.Business.Concrete;
+using MyMvcProject.DataAccess.Concrete.EntityFramework;
 using MyMvcProject.Entity.Concrete;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,9 @@ namespace MyMvcProject.UI.Controllers
     [AllowAnonymous]
     public class LoginController : Controller
     {
+        private readonly IWriterLoginService _writerLoginService = new WriterLoginService(new EfWriterRepository());
+        private readonly IAdminLoginService _adminLoginService = new AdminLoginService(new EfAdminRepository());
+
         [HttpGet]
         public ActionResult Admin()
         {
@@ -22,8 +26,7 @@ namespace MyMvcProject.UI.Controllers
         [HttpPost]
         public ActionResult Admin(Admin admin)
         {
-            MyMvcProjectContext context = new MyMvcProjectContext();
-            var adminIfo = context.Admins.FirstOrDefault(p => p.UserName == admin.UserName && p.Password == admin.Password);
+            var adminIfo = _adminLoginService.ValidateAdmin(admin.UserName,admin.Password) ;
             if (adminIfo != null)
             {
                 FormsAuthentication.SetAuthCookie(adminIfo.UserName, false);
@@ -41,12 +44,11 @@ namespace MyMvcProject.UI.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Writer(Writer writer)
         {
-
-            MyMvcProjectContext context = new MyMvcProjectContext();
-            var writerInfo = context.Writers.FirstOrDefault(p => p.WriterMail == writer.WriterMail && p.WriterPassword == writer.WriterPassword);
+            var writerInfo = _writerLoginService.ValidateWriter(writer.WriterMail,writer.WriterPassword);
             if (writerInfo != null)
             {
                 FormsAuthentication.SetAuthCookie(writerInfo.WriterMail, false);

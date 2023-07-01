@@ -51,19 +51,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IAboutService.cs" />
+    <Compile Include="Abstract\IAdminLoginService.cs" />
     <Compile Include="Abstract\ICategoryService.cs" />
     <Compile Include="Abstract\IContactService.cs" />
     <Compile Include="Abstract\IContentService.cs" />
     <Compile Include="Abstract\IHeadingService.cs" />
     <Compile Include="Abstract\IImageFileService.cs" />
+    <Compile Include="Abstract\IWriterLoginService.cs" />
     <Compile Include="Abstract\IMessageService.cs" />
     <Compile Include="Abstract\IWriterService.cs" />
     <Compile Include="Concrete\AboutService.cs" />
+    <Compile Include="Concrete\AdminLoginService.cs" />
     <Compile Include="Concrete\CategoryService.cs" />
     <Compile Include="Concrete\ContactService.cs" />
     <Compile Include="Concrete\ContentService.cs" />
     <Compile Include="Concrete\HeadingService.cs" />
     <Compile Include="Concrete\ImageFileService.cs" />
+    <Compile Include="Concrete\WriterLoginService.cs" />
     <Compile Include="Concrete\MessageService.cs" />
     <Compile Include="Concrete\WriterService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
