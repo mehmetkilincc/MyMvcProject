@@ -1,6 +1,7 @@
 ﻿using MyMvcProject.Business.Abstract;
 using MyMvcProject.Business.Concrete;
 using MyMvcProject.DataAccess.Concrete.EntityFramework;
+using MyMvcProject.DataAccess.Data;
 using MyMvcProject.Entity.Concrete;
 using Newtonsoft.Json;
 using System;
@@ -13,8 +14,8 @@ namespace MyMvcProject.UI.Controllers
 {
     public class WriterPanelContentController : Controller
     {
-        private readonly IContentService _contentService = new ContentManager(new EfContentDal());
-        private readonly MyMvcProjectContext _context = new MyMvcProjectContext();
+        private readonly IContentService _contentService = new ContentService(new EfContentRepository());
+        MyMvcProjectContext _context = new MyMvcProjectContext();
 
         [HttpGet]
         public ActionResult MyContent(string sessionInfo)

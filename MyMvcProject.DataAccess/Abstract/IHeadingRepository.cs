@@ -7,7 +7,7 @@ using MyMvcProject.Entity.Concrete;
 
 namespace MyMvcProject.DataAccess.Abstract
 {
-    public interface ICategoryDal:IEntityRepository<Category>
+    public interface IHeadingRepository:IRepository<Heading>
     {
     }
 }

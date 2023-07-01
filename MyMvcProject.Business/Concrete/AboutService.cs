@@ -10,38 +10,38 @@ using System.Threading.Tasks;
 
 namespace MyMvcProject.Business.Concrete
 {
-    public class AboutManager : IAboutService
+    public class AboutService : IAboutService
     {
-        private readonly IAboutDal _aboutDal;
+        private readonly IAboutRepository _aboutRepository;
 
-        public AboutManager(IAboutDal aboutDal)
+        public AboutService(IAboutRepository aboutRepository)
         {
-            _aboutDal = aboutDal;
+            _aboutRepository = aboutRepository;
         }
 
         public void Add(About about)
         {
-            _aboutDal.Add(about);
+            _aboutRepository.Add(about);
         }
 
         public void Delete(About about)
         {
-            _aboutDal.Delete(about);
+            _aboutRepository.Delete(about);
         }
 
         public List<About> GetAll()
         {
-            return _aboutDal.GetAll();
+            return _aboutRepository.GetAll();
         }
 
         public About GetById(int id)
         {
-           return _aboutDal.Get(about => about.AboutId ==id);
+           return _aboutRepository.Get(about => about.AboutId ==id);
         }
 
         public void Update(About about)
         {
-            _aboutDal.Update(about);
+            _aboutRepository.Update(about);
         }
     }
 }

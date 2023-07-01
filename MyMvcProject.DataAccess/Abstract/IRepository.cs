@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyMvcProject.DataAccess.Abstract
 {
-    public interface IEntityRepository<T> where T : class, IEntity, new()
+    public interface IRepository<T> where T : class, IEntity, new()
     {
         List<T> GetAll();
         List<T> GetAll(Expression<Func<T, bool>> filter);

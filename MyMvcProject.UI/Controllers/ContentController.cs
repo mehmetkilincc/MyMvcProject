@@ -11,7 +11,7 @@ namespace MyMvcProject.UI.Controllers
 {
     public class ContentController : Controller
     {
-        private readonly IContentService _contentService = new ContentManager(new EfContentDal());
+        private readonly IContentService _contentService = new ContentService(new EfContentRepository());
 
         [HttpGet]
         public ActionResult Index()

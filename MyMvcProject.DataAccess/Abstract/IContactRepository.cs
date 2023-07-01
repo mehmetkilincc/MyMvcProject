@@ -7,7 +7,7 @@ using MyMvcProject.Entity.Concrete;
 
 namespace MyMvcProject.DataAccess.Abstract
 {
-    public interface IContactDal:IEntityRepository<Contact>
+    public interface IContactRepository:IRepository<Contact>
     {
     }
 }

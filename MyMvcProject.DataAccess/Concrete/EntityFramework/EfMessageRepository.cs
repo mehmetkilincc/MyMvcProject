@@ -1,4 +1,5 @@
 ﻿using MyMvcProject.DataAccess.Abstract;
+using MyMvcProject.DataAccess.Data;
 using MyMvcProject.Entity.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MyMvcProject.DataAccess.Concrete.EntityFramework
 {
-    public class EfCategoryDal : EntityRepositoryBase<Category, MyMvcProjectContext>, ICategoryDal
+    public class EfMessageRepository:RepositoryBase<Message,MyMvcProjectContext>,IMessageRepository
     {
     }
 }

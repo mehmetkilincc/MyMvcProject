@@ -9,36 +9,36 @@ using MyMvcProject.Entity.Concrete;
 
 namespace MyMvcProject.Business.Concrete
 {
-    public class WriterManager : IWriterService
+    public class WriterService : IWriterService
     {
-        private readonly IWriterDal _writerDal;
-        public WriterManager(IWriterDal writerDal)
+        private readonly IWriterRepository _writerRepository;
+        public WriterService(IWriterRepository writerRepository)
         {
-            _writerDal = writerDal;
+            _writerRepository = writerRepository;
         }
         public List<Writer> GetAll()
         {
-            return _writerDal.GetAll();
+            return _writerRepository.GetAll();
         }
 
         public Writer GetById(int id)
         {
-            return _writerDal.Get(x => x.WriterId == id);
+            return _writerRepository.Get(x => x.WriterId == id);
         }
 
         public void Add(Writer writer)
         {
-             _writerDal.Add(writer);
+             _writerRepository.Add(writer);
         }
 
         public void Update(Writer writer)
         {
-            _writerDal.Update(writer);
+            _writerRepository.Update(writer);
         }
 
         public void Delete(Writer writer)
         {
-            _writerDal.Delete(writer);
+            _writerRepository.Delete(writer);
         }
     }
 }

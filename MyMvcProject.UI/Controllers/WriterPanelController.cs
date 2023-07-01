@@ -1,6 +1,7 @@
 ﻿using MyMvcProject.Business.Abstract;
 using MyMvcProject.Business.Concrete;
 using MyMvcProject.DataAccess.Concrete.EntityFramework;
+using MyMvcProject.DataAccess.Data;
 using MyMvcProject.Entity.Concrete;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,8 @@ namespace MyMvcProject.UI.Controllers
 {
     public class WriterPanelController : Controller
     {
-        private readonly IHeadingService _headingService = new HeadingManager(new EfHeadingDal());
-        private readonly ICategoryService _categoryService = new CategoryManager(new EfCategoryDal());
+        private readonly IHeadingService _headingService = new HeadingService(new EfHeadingRepository());
+        private readonly ICategoryService _categoryService = new CategoryService(new EfCategoryRepository());
         MyMvcProjectContext context = new MyMvcProjectContext();
 
         public ActionResult WriterProfile()

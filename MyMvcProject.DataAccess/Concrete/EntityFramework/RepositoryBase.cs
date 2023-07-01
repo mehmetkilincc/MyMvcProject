@@ -10,7 +10,7 @@ using MyMvcProject.Entity.Abstract;
 
 namespace MyMvcProject.DataAccess.Concrete.EntityFramework
 {
-    public class EntityRepositoryBase<T, TContext> : IEntityRepository<T>
+    public class RepositoryBase<T, TContext> : IRepository<T>
         where T : class, IEntity, new()
         where TContext : DbContext, new()
     {

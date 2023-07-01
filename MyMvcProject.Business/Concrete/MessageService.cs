@@ -10,18 +10,18 @@ using System.Threading.Tasks;
 
 namespace MyMvcProject.Business.Concrete
 {
-    public class MessageManager : IMessageService
+    public class MessageService : IMessageService
     {
-        private IMessageDal _messageDal;
+        private IMessageRepository _messageRepository;
 
-        public MessageManager(IMessageDal messageDal)
+        public MessageService(IMessageRepository messageRepository)
         {
-            _messageDal = messageDal;
+            _messageRepository = messageRepository;
         }
 
         public void Add(Message message)
         {
-            _messageDal.Add(message);
+            _messageRepository.Add(message);
         }
 
         public void Delete(Message message)
@@ -31,17 +31,17 @@ namespace MyMvcProject.Business.Concrete
 
         public List<Message> GetAllInbox(string receiverMail)
         {
-            return _messageDal.GetAll(message => message.ReceiverMail == receiverMail);
+            return _messageRepository.GetAll(message => message.ReceiverMail == receiverMail);
         }
 
         public List<Message> GetAllSendbox(string senderMail)
         {
-            return _messageDal.GetAll(message => message.SenderMail == senderMail);
+            return _messageRepository.GetAll(message => message.SenderMail == senderMail);
         }
 
         public Message GetById(int id)
         {
-            return _messageDal.Get(message=>message.MessageId == id);
+            return _messageRepository.Get(message=>message.MessageId == id);
         }
 
         public void Update(Message message)

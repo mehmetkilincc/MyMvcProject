@@ -14,8 +14,7 @@ namespace MyMvcProject.UI.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ICategoryService _categoryService = new CategoryManager(new EfCategoryDal());
-        // GET: Category
+        private readonly ICategoryService _categoryService = new CategoryService(new EfCategoryRepository());
   
         public ActionResult Index()
         {

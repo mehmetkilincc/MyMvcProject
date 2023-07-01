@@ -9,26 +9,26 @@ using MyMvcProject.Entity.Concrete;
 
 namespace MyMvcProject.Business.Concrete
 {
-    public class ContentManager : IContentService
+    public class ContentService : IContentService
     {
-        private readonly IContentDal _contentDal;
-        public ContentManager(IContentDal contentDal)
+        private readonly IContentRepository _contentRepository;
+        public ContentService(IContentRepository contentRepository)
         {
-            _contentDal = contentDal;
+            _contentRepository = contentRepository;
         }
 
         public List<Content> GetAll()
         {
-            return _contentDal.GetAll();
+            return _contentRepository.GetAll();
         }
         public List<Content> GetAllByWriterId(int id)
         {
-            return _contentDal.GetAll(p=>p.WriterId == id);
+            return _contentRepository.GetAll(p=>p.WriterId == id);
         }
 
         public List<Content> GetAllByHeadingId(int id)
         {
-            return _contentDal.GetAll(x => x.HeadingId == id);
+            return _contentRepository.GetAll(x => x.HeadingId == id);
         }
 
         public Content GetById(int id)
@@ -38,7 +38,7 @@ namespace MyMvcProject.Business.Concrete
 
         public void Add(Content content)
         {
-            _contentDal.Add(content);
+            _contentRepository.Add(content);
         }
 
         public void Update(Content content)

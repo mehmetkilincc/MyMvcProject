@@ -9,38 +9,38 @@ using System.Threading.Tasks;
 
 namespace MyMvcProject.Business.Concrete
 {
-    public class ContactManager : IContactService
+    public class ContactService : IContactService
     {
-        private readonly IContactDal _contactDal;
+        private readonly IContactRepository _contactRepository;
 
-        public ContactManager(IContactDal contactDal)
+        public ContactService(IContactRepository contactRepository)
         {
-            _contactDal = contactDal;
+            _contactRepository = contactRepository;
         }
 
         public void Add(Contact contact)
         {
-           _contactDal.Add(contact);
+           _contactRepository.Add(contact);
         }
 
         public void Delete(Contact contact)
         {
-           _contactDal.Delete(contact);
+           _contactRepository.Delete(contact);
         }
 
         public List<Contact> GetAll()
         {
-            return _contactDal.GetAll();
+            return _contactRepository.GetAll();
         }
 
         public Contact GetById(int id)
         {
-            return _contactDal.Get(contact=>contact.ContactId == id);
+            return _contactRepository.Get(contact=>contact.ContactId == id);
         }
 
         public void Update(Contact contact)
         {
-            _contactDal.Update(contact);
+            _contactRepository.Update(contact);
         }
     }
 }

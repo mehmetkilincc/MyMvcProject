@@ -51,25 +51,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IAboutDal.cs" />
-    <Compile Include="Abstract\ICategoryDal.cs" />
-    <Compile Include="Abstract\IContactDal.cs" />
-    <Compile Include="Abstract\IContentDal.cs" />
-    <Compile Include="Abstract\IEntityRepository.cs" />
-    <Compile Include="Abstract\IHeadingDal.cs" />
-    <Compile Include="Abstract\IImageFileDal.cs" />
-    <Compile Include="Abstract\IMessageDal.cs" />
-    <Compile Include="Abstract\IWriterDal.cs" />
-    <Compile Include="Concrete\EntityFramework\EfAboutDal.cs" />
-    <Compile Include="Concrete\EntityFramework\EfCategoryDal.cs" />
-    <Compile Include="Concrete\EntityFramework\EfContactDal.cs" />
-    <Compile Include="Concrete\EntityFramework\EfContentDal.cs" />
-    <Compile Include="Concrete\EntityFramework\EfImageFileDal.cs" />
-    <Compile Include="Concrete\EntityFramework\EfMessageDal.cs" />
-    <Compile Include="Concrete\EntityFramework\EntityRepositoryBase.cs" />
-    <Compile Include="Concrete\EntityFramework\EfHeadingDal.cs" />
-    <Compile Include="Concrete\EntityFramework\MyMvcProjectContext.cs" />
-    <Compile Include="Concrete\EntityFramework\EfWriterDal.cs" />
+    <Compile Include="Abstract\IAboutRepository.cs" />
+    <Compile Include="Abstract\ICategoryRepository.cs" />
+    <Compile Include="Abstract\IContactRepository.cs" />
+    <Compile Include="Abstract\IContentRepository.cs" />
+    <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Abstract\IHeadingRepository.cs" />
+    <Compile Include="Abstract\IImageFileRepository.cs" />
+    <Compile Include="Abstract\IMessageRepository.cs" />
+    <Compile Include="Abstract\IWriterRepository.cs" />
+    <Compile Include="Concrete\EntityFramework\EfAboutRepository.cs" />
+    <Compile Include="Concrete\EntityFramework\EfCategoryRepository.cs" />
+    <Compile Include="Concrete\EntityFramework\EfContactRepository.cs" />
+    <Compile Include="Concrete\EntityFramework\EfContentRepository.cs" />
+    <Compile Include="Concrete\EntityFramework\EfImageFileRepository.cs" />
+    <Compile Include="Concrete\EntityFramework\EfMessageRepository.cs" />
+    <Compile Include="Concrete\EntityFramework\RepositoryBase.cs" />
+    <Compile Include="Concrete\EntityFramework\EfHeadingRepository.cs" />
+    <Compile Include="Data\MyMvcProjectContext.cs" />
+    <Compile Include="Concrete\EntityFramework\EfWriterRepository.cs" />
     <Compile Include="Migrations\202212302226204_mig_writer_edit.cs" />
     <Compile Include="Migrations\202212302226204_mig_writer_edit.designer.cs">
       <DependentUpon>202212302226204_mig_writer_edit.cs</DependentUpon>

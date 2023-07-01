@@ -11,11 +11,11 @@ namespace MyMvcProject.UI.Controllers
 {
     public class GalleryController : Controller
     {
-        ImageFileManager imageFileService = new ImageFileManager(new EfImageFileDal());
+       private readonly IImageFileService _imageFileService = new ImageFileService(new EfImageFileRepository());
         // GET: Gallery
         public ActionResult Index()
         {
-            var images = imageFileService.GetAll();
+            var images = _imageFileService.GetAll();
             return View(images);
         }
     }

@@ -1,4 +1,5 @@
 ﻿using MyMvcProject.DataAccess.Concrete.EntityFramework;
+using MyMvcProject.DataAccess.Data;
 using MyMvcProject.Entity.Concrete;
 using System;
 using System.Collections.Generic;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FluentValidation.Results;
+using MyMvcProject.Business.Abstract;
 using MyMvcProject.Business.Concrete;
 using MyMvcProject.Business.ValidationRules.FluentValidation;
 using MyMvcProject.DataAccess.Concrete.EntityFramework;
@@ -13,12 +14,12 @@ namespace MyMvcProject.UI.Controllers
 {
     public class AdminCategoryController : Controller
     {
-        private CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+        private readonly ICategoryService _categoryService = new CategoryService(new EfCategoryRepository());
 
         [Authorize(Roles ="B")]
         public ActionResult Index()
         {
-            var categoryList = categoryManager.GetAll();
+            var categoryList = _categoryService.GetAll();
             return View(categoryList);
         }
 
@@ -35,7 +36,7 @@ namespace MyMvcProject.UI.Controllers
             ValidationResult result = categoryValidator.Validate(category);
             if (result.IsValid)
             {
-                categoryManager.Add(category);
+                _categoryService.Add(category);
                 return RedirectToAction("Index", "AdminCategory");
             }
             else
@@ -51,7 +52,7 @@ namespace MyMvcProject.UI.Controllers
         [HttpGet]
         public ActionResult EditCategory(int id)
         {
-            var category = categoryManager.GetById(id);
+            var category = _categoryService.GetById(id);
             return View(category);
         }
 
@@ -62,7 +63,7 @@ namespace MyMvcProject.UI.Controllers
             ValidationResult result = categoryValidator.Validate(category);
             if (result.IsValid)
             {
-                categoryManager.Update(category);
+                _categoryService.Update(category);
                 return RedirectToAction("Index", "AdminCategory");
             }
             else
@@ -77,8 +78,8 @@ namespace MyMvcProject.UI.Controllers
 
         public ActionResult DeleteCategory(int id)
         {
-            var category = categoryManager.GetById(id);
-            categoryManager.Delete(category);
+            var category = _categoryService.GetById(id);
+            _categoryService.Delete(category);
             return RedirectToAction("Index", "AdminCategory");
         }
     }

@@ -9,39 +9,39 @@ using MyMvcProject.Entity.Concrete;
 
 namespace MyMvcProject.Business.Concrete
 {
-    public class CategoryManager : ICategoryService
+    public class CategoryService : ICategoryService
     {
-        private ICategoryDal _categoryDal;
+        private ICategoryRepository _categoryRepository;
 
-        public CategoryManager(ICategoryDal categoryDal)
+        public CategoryService(ICategoryRepository categoryRepository)
         {
-            _categoryDal=categoryDal;
+            _categoryRepository=categoryRepository;
         }
 
         public List<Category> GetAll()
         {
-            return _categoryDal.GetAll();
+            return _categoryRepository.GetAll();
         }
 
         public Category GetById(int id)
         {
-            return _categoryDal.Get(x=>x.CategoryId==id);
+            return _categoryRepository.Get(x=>x.CategoryId==id);
         }
 
         public void Add(Category category)
         {
             
-            _categoryDal.Add(category);
+            _categoryRepository.Add(category);
         }
 
         public void Update(Category category)
         {
-            _categoryDal.Update(category);
+            _categoryRepository.Update(category);
         }
 
         public void Delete(Category category)
         {
-            _categoryDal.Delete(category);
+            _categoryRepository.Delete(category);
         }
     }
 }

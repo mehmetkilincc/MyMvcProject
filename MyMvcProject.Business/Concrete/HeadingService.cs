@@ -9,42 +9,42 @@ using MyMvcProject.Entity.Concrete;
 
 namespace MyMvcProject.Business.Concrete
 {
-    public class HeadingManager : IHeadingService
+    public class HeadingService : IHeadingService
     {
-        private readonly IHeadingDal _headingDal;
+        private readonly IHeadingRepository _headingRepository;
 
-        public HeadingManager(IHeadingDal headingDal)
+        public HeadingService(IHeadingRepository headingRepository)
         {
-            _headingDal = headingDal;
+            _headingRepository = headingRepository;
         }
 
         public List<Heading> GetAll()
         {
-            return _headingDal.GetAll();
+            return _headingRepository.GetAll();
         }
         public List<Heading> GetAllByWriterId(int id)
         {
-            return _headingDal.GetAll(heading => heading.WriterId == id);
+            return _headingRepository.GetAll(heading => heading.WriterId == id);
         }
 
         public Heading GetById(int id)
         {
-            return _headingDal.Get(x => x.HeadingId == id);
+            return _headingRepository.Get(x => x.HeadingId == id);
         }
 
         public void Add(Heading heading)
         {
-            _headingDal.Add(heading);
+            _headingRepository.Add(heading);
         }
 
         public void Update(Heading heading)
         {
-            _headingDal.Update(heading);
+            _headingRepository.Update(heading);
         }
 
         public void Delete(Heading heading)
         {
-            _headingDal.Update(heading);
+            _headingRepository.Update(heading);
         }
     }
 }

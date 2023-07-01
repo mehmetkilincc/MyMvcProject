@@ -4,24 +4,23 @@ using MyMvcProject.Entity.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MyMvcProject.Business.Concrete
 {
-    public class ImageFileManager : IImageFileService
+    public class ImageFileService : IImageFileService
     {
-        private readonly IImageFileDal _imageFileDal;
+        private readonly IImageFileRepository _imageFileRepository;
 
-        public ImageFileManager(IImageFileDal imageFileDal)
+        public ImageFileService(IImageFileRepository imageFileRepository)
         {
-            _imageFileDal = imageFileDal;
+            _imageFileRepository = imageFileRepository;
         }
 
         public List<ImageFile> GetAll()
         {
-            return _imageFileDal.GetAll();
+            return _imageFileRepository.GetAll();
         }
     }
 }

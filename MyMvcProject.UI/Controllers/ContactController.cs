@@ -1,4 +1,5 @@
-﻿using MyMvcProject.Business.Concrete;
+﻿using MyMvcProject.Business.Abstract;
+using MyMvcProject.Business.Concrete;
 using MyMvcProject.Business.ValidationRules.FluentValidation;
 using MyMvcProject.DataAccess.Concrete.EntityFramework;
 using System;
@@ -12,17 +13,17 @@ namespace MyMvcProject.UI.Controllers
     public class ContactController : Controller
     {
         // GET: Contact
-        ContactManager contactManager= new ContactManager(new EfContactDal());
+        private readonly IContactService _contactService= new ContactService(new EfContactRepository());
         ContactValidator contactValidator = new ContactValidator();
         public ActionResult Index()
         {
-            var contacts = contactManager.GetAll();
+            var contacts = _contactService.GetAll();
             return View(contacts);
         }
 
         public ActionResult GetContactDetails(int id)
         {
-            var contact = contactManager.GetById(id);
+            var contact = _contactService.GetById(id);
             return View(contact);
         }
         public PartialViewResult MessageListMenu()

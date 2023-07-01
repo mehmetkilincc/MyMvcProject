@@ -12,11 +12,11 @@ namespace MyMvcProject.UI.Controllers
 {
     public class AboutController : Controller
     {
-        AboutManager aboutManager = new AboutManager(new EfAboutDal());
-        // GET: About
+        private readonly IAboutService _aboutService = new AboutService(new EfAboutRepository());
+        
         public ActionResult Index()
         {
-            var abouts = aboutManager.GetAll();
+            var abouts = _aboutService.GetAll();
             return View(abouts);
         }
         [HttpGet]
@@ -27,8 +27,8 @@ namespace MyMvcProject.UI.Controllers
         [HttpPost]
         public ActionResult AddAbout(About about)
         {
-            aboutManager.Add(about);
-            return RedirectToAction("Index","About");
+            _aboutService.Add(about);
+            return RedirectToAction("Index", "About");
         }
         public PartialViewResult AboutPartial()
         {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyMvcProject.DataAccess.Abstract
 {
-    public interface IMessageDal:IEntityRepository<Message>
+    public interface IImageFileRepository : IRepository<ImageFile>
     {
     }
 }

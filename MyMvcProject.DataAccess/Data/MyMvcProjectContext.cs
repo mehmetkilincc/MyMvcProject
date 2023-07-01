@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using MyMvcProject.Entity.Concrete;
 
-namespace MyMvcProject.DataAccess.Concrete.EntityFramework
+namespace MyMvcProject.DataAccess.Data
 {
-    public class MyMvcProjectContext :DbContext
+    public class MyMvcProjectContext : DbContext
     {
         public DbSet<About> Abouts { get; set; }
         public DbSet<Category> Categories { get; set; }
