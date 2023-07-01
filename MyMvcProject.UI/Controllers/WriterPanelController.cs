@@ -1,5 +1,7 @@
-﻿using MyMvcProject.Business.Abstract;
+﻿using FluentValidation.Results;
+using MyMvcProject.Business.Abstract;
 using MyMvcProject.Business.Concrete;
+using MyMvcProject.Business.ValidationRules.FluentValidation;
 using MyMvcProject.DataAccess.Concrete.EntityFramework;
 using MyMvcProject.DataAccess.Data;
 using MyMvcProject.Entity.Concrete;
@@ -15,10 +17,35 @@ namespace MyMvcProject.UI.Controllers
     {
         private readonly IHeadingService _headingService = new HeadingService(new EfHeadingRepository());
         private readonly ICategoryService _categoryService = new CategoryService(new EfCategoryRepository());
+        private readonly IWriterService _writerService = new WriterService(new EfWriterRepository());
         MyMvcProjectContext context = new MyMvcProjectContext();
 
-        public ActionResult WriterProfile()
+        [HttpGet]
+        public ActionResult WriterProfile(int id = 0)
         {
+            string sessionInfo = (string)Session["WriterMail"];
+            id = context.Writers.Where(p => p.WriterMail == sessionInfo).Select(y => y.WriterId).FirstOrDefault();
+            var writer = _writerService.GetById(id);
+            return View(writer);
+        }
+
+        [HttpPost]
+        public ActionResult WriterProfile(Writer writer)
+        {
+            WriterValidator writerValidator = new WriterValidator();
+            ValidationResult result = writerValidator.Validate(writer);
+            if (result.IsValid)
+            {
+                _writerService.Update(writer);
+                return RedirectToAction("AllHeading", "WriterPanel");
+            }
+            else
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                }
+            }
             return View();
         }
 
@@ -30,10 +57,10 @@ namespace MyMvcProject.UI.Controllers
             var headings = _headingService.GetAllByWriterId(writerId);
             return View(headings);
         }
-        public ActionResult AllHeading() 
+        public ActionResult AllHeading()
         {
             var headings = _headingService.GetAll();
-            return View(headings); 
+            return View(headings);
         }
 
         public ActionResult NewHeading()
