@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MyMvcProject.Business.Abstract;
+using MyMvcProject.Business.Concrete;
+using MyMvcProject.DataAccess.Concrete.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,6 +27,12 @@ namespace MyMvcProject.UI.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult HomePage()
+        {
             return View();
         }
     }
