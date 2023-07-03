@@ -58,7 +58,7 @@ namespace MyMvcProject.UI.Controllers
             {
                 message.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
                 _messageService.Add(message);
-                return RedirectToAction("Index", "Message");
+                return RedirectToAction("SendBox", "Message");
             }
             else
             {

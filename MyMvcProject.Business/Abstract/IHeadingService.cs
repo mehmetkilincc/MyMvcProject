@@ -11,6 +11,7 @@ namespace MyMvcProject.Business.Abstract
     {
         List<Heading> GetAll();
         List<Heading> GetAllByWriterId(int id);
+        List<Heading> GetAllByCategoryId(int id);
         Heading GetById(int id);
         void Add(Heading heading);
         void Update(Heading heading);

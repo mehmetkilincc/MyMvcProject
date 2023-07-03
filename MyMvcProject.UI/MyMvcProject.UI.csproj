@@ -2529,6 +2529,7 @@
     <Content Include="Views\AdminCategory\Report.cshtml" />
     <Content Include="Views\Content\Report.cshtml" />
     <Content Include="Views\Heading\Report.cshtml" />
+    <Content Include="Views\AdminCategory\Headings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

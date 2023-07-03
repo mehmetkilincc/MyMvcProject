@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.EnterpriseServices;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -15,8 +16,7 @@ namespace MyMvcProject.UI.Controllers
     public class AdminCategoryController : Controller
     {
         private readonly ICategoryService _categoryService = new CategoryService(new EfCategoryRepository());
-
-        [Authorize(Roles ="B")]
+        private readonly IHeadingService _headingService = new HeadingService(new EfHeadingRepository());
         public ActionResult Index()
         {
             var categoryList = _categoryService.GetAll();
@@ -74,6 +74,12 @@ namespace MyMvcProject.UI.Controllers
                 }
             }
             return View();
+        }
+
+        public ActionResult Headings(int id)
+        {
+            var headings = _headingService.GetAllByCategoryId(id);
+            return View(headings);
         }
 
         public ActionResult DeleteCategory(int id)

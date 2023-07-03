@@ -26,6 +26,10 @@ namespace MyMvcProject.Business.Concrete
         {
             return _headingRepository.GetAll(heading => heading.WriterId == id);
         }
+        public List<Heading> GetAllByCategoryId(int id)
+        {
+            return _headingRepository.GetAll(heading => heading.CategoryId == id);
+        }
 
         public Heading GetById(int id)
         {

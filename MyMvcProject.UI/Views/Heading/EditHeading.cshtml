@@ -5,14 +5,13 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>EditHeading</h2>
+<h2>Edit Heading</h2>
 
 @using (Html.BeginForm("EditHeading","Heading",FormMethod.Post))
 {
     <div class="form-group">
-        @Html.Label("Heading Id")
-        @Html.TextBoxFor(x => x.HeadingId, new { @class = "form-control" })
-        <br />
+        @Html.HiddenFor(x => x.HeadingId, new { @class = "form-control" })
+
         @Html.Label("Heading Name")
         @Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control" })
         <br />
@@ -21,10 +20,9 @@
         <br />
         @Html.Label("Heading Category")
         @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.categories, new { @class = "form-control" })
+
+        @Html.HiddenFor(x => x.WriterId, new { @class = "form-control" })
         <br />
-        @Html.Label("Writer Id")
-        @Html.TextBoxFor(x => x.WriterId, new { @class = "form-control" })
-        <br />
-        <button class="btn btn-success">Save Changes</button>
+        <button class="btn btn-success">Update</button>
     </div>
 }

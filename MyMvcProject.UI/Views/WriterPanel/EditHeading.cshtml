@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_WriterLayout.cshtml";
 }
 
-<h2>EditHeading</h2>
+<h2>Edit Heading</h2>
 
 @using (Html.BeginForm("EditHeading", "WriterPanel", FormMethod.Post))
 {
@@ -19,6 +19,6 @@
         @Html.Label("Heading Category")
         @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.categories, new { @class = "form-control" })
         <br />
-        <button class="btn btn-success">Save Changes</button>
+        <button class="btn btn-success">Update</button>
     </div>
 }
