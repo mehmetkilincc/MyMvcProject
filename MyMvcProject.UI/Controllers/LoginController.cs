@@ -14,8 +14,14 @@ namespace MyMvcProject.UI.Controllers
     [AllowAnonymous]
     public class LoginController : Controller
     {
-        private readonly IWriterLoginService _writerLoginService = new WriterLoginService(new EfWriterRepository());
-        private readonly IAdminLoginService _adminLoginService = new AdminLoginService(new EfAdminRepository());
+        private readonly IWriterLoginService _writerLoginService;
+        private readonly IAdminLoginService _adminLoginService;
+
+        public LoginController(IWriterLoginService writerLoginService, IAdminLoginService adminLoginService)
+        {
+            _writerLoginService = writerLoginService;
+            _adminLoginService = adminLoginService;
+        }
 
         [HttpGet]
         public ActionResult Admin()

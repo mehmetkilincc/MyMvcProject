@@ -12,8 +12,13 @@ namespace MyMvcProject.UI.Controllers
 {
     public class AboutController : Controller
     {
-        private readonly IAboutService _aboutService = new AboutService(new EfAboutRepository());
-        
+        private readonly IAboutService _aboutService;
+
+        public AboutController(IAboutService aboutService)
+        {
+            _aboutService = aboutService;
+        }
+
         public ActionResult Index()
         {
             var abouts = _aboutService.GetAll();

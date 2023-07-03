@@ -12,8 +12,14 @@ namespace MyMvcProject.UI.Controllers
     [AllowAnonymous]
     public class MainController : Controller
     {
-        private readonly IHeadingService _headingService = new HeadingService(new EfHeadingRepository());
-        private readonly IContentService _contentService = new ContentService(new EfContentRepository());
+        private readonly IHeadingService _headingService;
+        private readonly IContentService _contentService;
+
+        public MainController(IHeadingService headingService, IContentService contentService)
+        {
+            _headingService = headingService;
+            _contentService = contentService;
+        }
 
         public PartialViewResult Index(int id = 0)
         {

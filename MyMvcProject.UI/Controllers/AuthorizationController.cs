@@ -11,7 +11,13 @@ namespace MyMvcProject.UI.Controllers
 {
     public class AuthorizationController : Controller
     {
-        private readonly IAdminService _adminService = new AdminService(new EfAdminRepository());
+        private readonly IAdminService _adminService;
+
+        public AuthorizationController(IAdminService adminService)
+        {
+            _adminService = adminService;
+        }
+
         public ActionResult Index()
         {
             var admins = _adminService.GetAll();

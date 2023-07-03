@@ -15,10 +15,17 @@ namespace MyMvcProject.UI.Controllers
 {
     public class WriterPanelController : Controller
     {
-        private readonly IHeadingService _headingService = new HeadingService(new EfHeadingRepository());
-        private readonly ICategoryService _categoryService = new CategoryService(new EfCategoryRepository());
-        private readonly IWriterService _writerService = new WriterService(new EfWriterRepository());
+        private readonly IHeadingService _headingService;
+        private readonly ICategoryService _categoryService;
+        private readonly IWriterService _writerService;
         MyMvcProjectContext context = new MyMvcProjectContext();
+
+        public WriterPanelController(IHeadingService headingService, ICategoryService categoryService, IWriterService writerService)
+        {
+            _headingService = headingService;
+            _categoryService = categoryService;
+            _writerService = writerService;
+        }
 
         [HttpGet]
         public ActionResult WriterProfile(int id = 0)

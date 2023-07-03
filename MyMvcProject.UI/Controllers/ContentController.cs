@@ -12,7 +12,12 @@ namespace MyMvcProject.UI.Controllers
 {
     public class ContentController : Controller
     {
-        private readonly IContentService _contentService = new ContentService(new EfContentRepository());
+        private readonly IContentService _contentService;
+
+        public ContentController(IContentService contentService)
+        {
+            _contentService = contentService;
+        }
 
         [HttpGet]
         public ActionResult Index()

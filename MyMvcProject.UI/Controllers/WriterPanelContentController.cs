@@ -14,8 +14,13 @@ namespace MyMvcProject.UI.Controllers
 {
     public class WriterPanelContentController : Controller
     {
-        private readonly IContentService _contentService = new ContentService(new EfContentRepository());
+        private readonly IContentService _contentService;
         MyMvcProjectContext _context = new MyMvcProjectContext();
+
+        public WriterPanelContentController(IContentService contentService)
+        {
+            _contentService = contentService;
+        }
 
         [HttpGet]
         public ActionResult MyContent(string sessionInfo)

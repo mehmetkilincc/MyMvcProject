@@ -14,8 +14,13 @@ namespace MyMvcProject.UI.Controllers
 {
     public class WriterPanelMessageController : Controller
     {
-        private readonly IMessageService _messageService = new MessageService(new EfMessageRepository());
+        private readonly IMessageService _messageService;
         MessageValidator messageValidator = new MessageValidator();
+
+        public WriterPanelMessageController(IMessageService messageService)
+        {
+            _messageService = messageService;
+        }
 
         [HttpGet]
         public ActionResult Inbox()

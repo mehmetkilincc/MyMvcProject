@@ -11,8 +11,13 @@ namespace MyMvcProject.UI.Controllers
 {
     public class GalleryController : Controller
     {
-       private readonly IImageFileService _imageFileService = new ImageFileService(new EfImageFileRepository());
-        // GET: Gallery
+        private readonly IImageFileService _imageFileService;
+
+        public GalleryController(IImageFileService imageFileService)
+        {
+            _imageFileService = imageFileService;
+        }
+
         public ActionResult Index()
         {
             var images = _imageFileService.GetAll();

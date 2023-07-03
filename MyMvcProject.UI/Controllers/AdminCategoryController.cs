@@ -15,8 +15,15 @@ namespace MyMvcProject.UI.Controllers
 {
     public class AdminCategoryController : Controller
     {
-        private readonly ICategoryService _categoryService = new CategoryService(new EfCategoryRepository());
-        private readonly IHeadingService _headingService = new HeadingService(new EfHeadingRepository());
+        private readonly ICategoryService _categoryService;
+        private readonly IHeadingService _headingService;
+
+        public AdminCategoryController(ICategoryService categoryService, IHeadingService headingService)
+        {
+            _categoryService = categoryService;
+            _headingService = headingService;
+        }
+
         public ActionResult Index()
         {
             var categoryList = _categoryService.GetAll();
@@ -70,7 +77,7 @@ namespace MyMvcProject.UI.Controllers
             {
                 foreach (var error in result.Errors)
                 {
-                    ModelState.AddModelError(error.PropertyName,error.ErrorMessage);
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
                 }
             }
             return View();

@@ -14,7 +14,13 @@ namespace MyMvcProject.UI.Controllers
 {
     public class WriterController : Controller
     {
-        private readonly IWriterService _writerService = new WriterService(new EfWriterRepository());
+        private readonly IWriterService _writerService;
+
+        public WriterController(IWriterService writerService)
+        {
+            _writerService = writerService;
+        }
+
         public ActionResult Index()
         {
             var writers = _writerService.GetAll();

@@ -16,10 +16,18 @@ namespace MyMvcProject.UI.Controllers
 {
     public class HeadingController : Controller
     {
-        private readonly IHeadingService _headingService = new HeadingService(new EfHeadingRepository());
-        private readonly ICategoryService _categoryService = new CategoryService(new EfCategoryRepository());
-        private readonly IWriterService _writerService = new WriterService(new EfWriterRepository());
+        private readonly IHeadingService _headingService;
+        private readonly ICategoryService _categoryService;
+        private readonly IWriterService _writerService;
         private HeadingValidator HeadingValidator = new HeadingValidator();
+
+        public HeadingController(IHeadingService headingService, ICategoryService categoryService, IWriterService writerService)
+        {
+            _headingService = headingService;
+            _categoryService = categoryService;
+            _writerService = writerService;
+        }
+
         public ActionResult Index()
         {
             var headings = _headingService.GetAll();

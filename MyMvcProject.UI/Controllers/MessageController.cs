@@ -15,10 +15,14 @@ namespace MyMvcProject.UI.Controllers
 {
     public class MessageController : Controller
     {
-        private readonly IMessageService _messageService = new MessageService(new EfMessageRepository());
+        private readonly IMessageService _messageService;
         MessageValidator messageValidator = new MessageValidator();
 
-        [Authorize]
+        public MessageController(IMessageService messageService)
+        {
+            _messageService = messageService;          
+        }
+
         public ActionResult Inbox()
         {
             string receiverMail = (string)Session["WriterMail"];

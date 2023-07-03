@@ -12,9 +12,13 @@ namespace MyMvcProject.UI.Controllers
 {
     public class ContactController : Controller
     {
-        // GET: Contact
-        private readonly IContactService _contactService= new ContactService(new EfContactRepository());
-        ContactValidator contactValidator = new ContactValidator();
+        private readonly IContactService _contactService;
+
+        public ContactController(IContactService contactService)
+        {
+            _contactService = contactService;
+        }
+
         public ActionResult Index()
         {
             var contacts = _contactService.GetAll();
