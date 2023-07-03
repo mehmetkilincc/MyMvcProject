@@ -36,5 +36,10 @@ namespace MyMvcProject.UI.Controllers
             var contents = _contentService.GetAllByHeadingId(id);
             return View(contents);
         }
+        public ActionResult Report()
+        {
+            var contents = _contentService.GetAll();
+            return View(contents);
+        }
     }
 }

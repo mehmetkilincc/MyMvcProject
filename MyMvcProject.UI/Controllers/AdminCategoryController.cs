@@ -82,5 +82,12 @@ namespace MyMvcProject.UI.Controllers
             _categoryService.Delete(category);
             return RedirectToAction("Index", "AdminCategory");
         }
+
+        public ActionResult Report()
+        {
+            var categoryReport = _categoryService.GetAll();
+            return View(categoryReport);
+        }
+
     }
 }

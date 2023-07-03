@@ -176,6 +176,7 @@
     <Content Include="AdminLTE-3.0.4\build\js\Toasts.js" />
     <Content Include="AdminLTE-3.0.4\build\js\TodoList.js" />
     <Content Include="AdminLTE-3.0.4\build\js\Treeview.js" />
+    <Content Include="AdminLTE-3.0.4\dist\img\author.jpg" />
     <Content Include="AdminLTE-3.0.4\homepage\css\aos-animation.css" />
     <Content Include="AdminLTE-3.0.4\homepage\css\aos.css" />
     <Content Include="AdminLTE-3.0.4\homepage\css\bootstrap.css" />
@@ -2525,6 +2526,9 @@
     <Content Include="Views\Home\HomePage.cshtml" />
     <Content Include="Views\Content\GetAllContent.cshtml" />
     <Content Include="Views\Authorization\Index.cshtml" />
+    <Content Include="Views\AdminCategory\Report.cshtml" />
+    <Content Include="Views\Content\Report.cshtml" />
+    <Content Include="Views\Heading\Report.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

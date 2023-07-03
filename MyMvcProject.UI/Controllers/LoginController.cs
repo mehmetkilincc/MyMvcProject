@@ -65,7 +65,7 @@ namespace MyMvcProject.UI.Controllers
         {
             FormsAuthentication.SignOut();
             Session.Abandon();
-            return RedirectToAction("Headings", "Main");
+            return RedirectToAction("HomePage", "Home");
         }
     }
 }
