@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using MyMvcProject.Business.Abstract;
 using MyMvcProject.Business.Concrete;
 using MyMvcProject.DataAccess.Concrete.EntityFramework;
+using MyMvcProject.DataAccess.Data;
 
 namespace MyMvcProject.UI.Controllers
 {
@@ -17,6 +18,17 @@ namespace MyMvcProject.UI.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult GetAllContent(string text)
+        {
+            if (!string.IsNullOrEmpty(text))
+            {
+                var searchContents = _contentService.GetAllbyContent(text);
+                return View(searchContents);
+            }
+            var contents = _contentService.GetAll();
+            return View(contents);
         }
 
         public ActionResult ContentByHeading(int id)

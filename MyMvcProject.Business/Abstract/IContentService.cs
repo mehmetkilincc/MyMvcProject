@@ -12,6 +12,7 @@ namespace MyMvcProject.Business.Abstract
         List<Content> GetAll();
         List<Content> GetAllByWriterId(int id);
         List<Content> GetAllByHeadingId(int id);
+        List<Content> GetAllbyContent(string text);
         Content GetById(int id);
         void Add(Content content);
         void Update(Content content);

@@ -30,6 +30,10 @@ namespace MyMvcProject.Business.Concrete
         {
             return _contentRepository.GetAll(x => x.HeadingId == id);
         }
+        public List<Content> GetAllbyContent(string text)
+        {
+            return _contentRepository.GetAll(x=> x.ContentText.Contains(text));
+        }
 
         public Content GetById(int id)
         {
@@ -50,7 +54,5 @@ namespace MyMvcProject.Business.Concrete
         {
             throw new NotImplementedException();
         }
-
-       
     }
 }
