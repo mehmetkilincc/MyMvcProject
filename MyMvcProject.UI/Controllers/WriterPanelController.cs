@@ -1,14 +1,10 @@
 ﻿using FluentValidation.Results;
 using MyMvcProject.Business.Abstract;
-using MyMvcProject.Business.Concrete;
 using MyMvcProject.Business.ValidationRules.FluentValidation;
-using MyMvcProject.DataAccess.Concrete.EntityFramework;
-using MyMvcProject.DataAccess.Data;
 using MyMvcProject.Entity.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MyMvcProject.UI.Controllers
@@ -18,7 +14,6 @@ namespace MyMvcProject.UI.Controllers
         private readonly IHeadingService _headingService;
         private readonly ICategoryService _categoryService;
         private readonly IWriterService _writerService;
-        MyMvcProjectContext context = new MyMvcProjectContext();
 
         public WriterPanelController(IHeadingService headingService, ICategoryService categoryService, IWriterService writerService)
         {
@@ -31,8 +26,7 @@ namespace MyMvcProject.UI.Controllers
         public ActionResult WriterProfile(int id = 0)
         {
             string sessionInfo = (string)Session["WriterMail"];
-            id = context.Writers.Where(p => p.WriterMail == sessionInfo).Select(y => y.WriterId).FirstOrDefault();
-            var writer = _writerService.GetById(id);
+            var writer = _writerService.GetByMailAddress(sessionInfo);
             return View(writer);
         }
 
@@ -58,9 +52,9 @@ namespace MyMvcProject.UI.Controllers
 
         public ActionResult MyHeadings(string sessionInfo)
         {
-
             sessionInfo = (string)Session["WriterMail"];
-            var writerId = context.Writers.Where(p => p.WriterMail == sessionInfo).Select(y => y.WriterId).FirstOrDefault();
+            var writer = _writerService.GetByMailAddress(sessionInfo);
+            var writerId = writer.WriterId;
             var headings = _headingService.GetAllByWriterId(writerId);
             return View(headings);
         }
@@ -86,7 +80,8 @@ namespace MyMvcProject.UI.Controllers
         public ActionResult NewHeading(Heading heading)
         {
             var sessionInfo = (string)Session["WriterMail"];
-            var writerId = context.Writers.Where(p => p.WriterMail == sessionInfo).Select(y => y.WriterId).FirstOrDefault();
+            var writer = _writerService.GetByMailAddress(sessionInfo);
+            var writerId = writer.WriterId;
             heading.HeadingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             heading.WriterId = writerId;
             heading.HeadingStatus = true;

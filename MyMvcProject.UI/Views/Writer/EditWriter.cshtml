@@ -4,15 +4,11 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>'Edit Writer' Page</h2>
-<br />
+<h2>Edit Writer</h2>
 @using (Html.BeginForm("EditWriter", "Writer", FormMethod.Post))
 {
     <div class="form-group">
-        @Html.Label("Writer Id")
-        @Html.TextBoxFor(x => x.WriterId, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.WriterId, "", new { @class = "text-danger" })
-        <br/>
+        @Html.HiddenFor(x => x.WriterId, new { @class = "form-control" })   
         @Html.Label("Writer Name")
         @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.WriterName, "", new { @class = "text-danger" })
@@ -36,10 +32,10 @@
         @Html.Label("Writer Mail")
         @Html.TextBoxFor(x => x.WriterMail, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.WriterMail, "", new { @class = "text-danger" })
-        <br/>
-        @Html.Label("Writer Password")
-        @Html.TextBoxFor(x => x.WriterPassword, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.WriterPassword, "", new { @class = "text-danger" })
+        @*<br/>
+        @Html.Label("Writer Password")*@
+        @Html.HiddenFor(x => x.WriterPassword, new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(x => x.WriterPassword, "", new { @class = "text-danger" })*@
         <br/>
         <button class="btn btn-warning">Update</button>
     </div>

@@ -9,5 +9,6 @@ namespace MyMvcProject.DataAccess.Abstract
 {
     public interface IWriterRepository:IRepository<Writer>
     {
+        Writer GetByMailAddress(string mail);
     }
 }

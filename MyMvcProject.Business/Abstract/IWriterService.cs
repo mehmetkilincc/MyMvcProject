@@ -11,6 +11,7 @@ namespace MyMvcProject.Business.Abstract
     {
         List<Writer> GetAll();
         Writer GetById(int id);
+        Writer GetByMailAddress(string mail);
         void Add(Writer writer);
         void Update(Writer writer);
         void Delete(Writer writer);

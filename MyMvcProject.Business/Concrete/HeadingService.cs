@@ -22,10 +22,12 @@ namespace MyMvcProject.Business.Concrete
         {
             return _headingRepository.GetAll();
         }
+
         public List<Heading> GetAllByWriterId(int id)
         {
             return _headingRepository.GetAll(heading => heading.WriterId == id);
         }
+
         public List<Heading> GetAllByCategoryId(int id)
         {
             return _headingRepository.GetAll(heading => heading.CategoryId == id);

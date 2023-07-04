@@ -25,6 +25,10 @@ namespace MyMvcProject.Business.Concrete
         {
             return _writerRepository.Get(x => x.WriterId == id);
         }
+        public Writer GetByMailAddress(string mail)
+        {
+            return _writerRepository.GetByMailAddress(mail);
+        }
 
         public void Add(Writer writer)
         {
