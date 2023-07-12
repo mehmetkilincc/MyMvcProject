@@ -12,11 +12,11 @@ namespace MyMvcProject.Business.ValidationRules.FluentValidation
     {
         public CategoryValidator()
         {
-            RuleFor(category => category.CategoryName).NotEmpty().WithMessage("Kategori Adı Boş Geçilemez!")
-                .MinimumLength(3).WithMessage("Kategori adı minimum 3 karakter olmalıdır!")
-                .MaximumLength(20).WithMessage("Kategori adı maksimum 20 karakter olabilir!");
+            RuleFor(category => category.CategoryName).NotEmpty().WithMessage("Category name cannot be empty!")
+                .MinimumLength(3).WithMessage("Category name must contain a minimum of 3 characters!")
+                .MaximumLength(20).WithMessage("Category name  must contain a maximum of 20 characters!");
 
-            RuleFor(category => category.CategoryDescription).NotEmpty().WithMessage("Kategori tanımı Boş Geçilemez").EmailAddress();
+            RuleFor(category => category.CategoryDescription).NotEmpty().WithMessage("Description cannot be empty!");
         }
     }
 }

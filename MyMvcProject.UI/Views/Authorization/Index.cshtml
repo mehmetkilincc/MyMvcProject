@@ -9,15 +9,18 @@
 <div class="card">
     <div class="card-header">
         <h3 class="card-title text-center">Admin Operations</h3>
+        <a href="/Authorization/Create/" class="btn btn-dark btn-sm float-right">New Admin</a>
     </div>
     <div class="card-body p-0">
         <table class="table table-striped projects">
             <thead>
                 <tr class="text-center">
-                    <th>#</th>
+                    <th style="width: 1%"></th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Email</th>
                     <th>Username</th>
-                    <th>Authorize</th>
-                    <th>Make Pasive</th>
+                    <th>Authority</th>
                     <th>Change Role</th>
                 </tr>
             </thead>
@@ -25,16 +28,39 @@
                 @foreach (var item in Model)
                 {
                     <tr class="text-center">
-                        <th>@item.Id</th>
+                        <th>*</th>
+                        <td>@item.Name</td>
+                        <td>@item.Surname</td>
+                        <td>@item.Email</td>
                         <td>@item.UserName</td>
                         <td>@item.Role</td>
-                        <td><a href="/AdminCategory/DeleteCategory/@item.Id" class="btn btn-danger">Make Pasive</a></td>
-                        <td><a href="/AdminCategory/EditCategory/@item.Id" class="btn btn-warning">Change Role</a></td>
+                        <td>
+                            @switch (@item.Role)
+                            {
+                                case "Full Access":
+                                    <a class="btn btn-warning btn-sm" href="/Authorization/Delete/@item.Id">
+                                        <i class="fas fa-edit">
+                                        </i>
+                                        Change Role
+                                    </a>
+                                    break;
+
+                                case "Limited Access":
+                                    <a class="btn btn-warning btn-sm" href="/Authorization/Delete/@item.Id">
+                                        <i class="fas fa-edit">
+                                        </i>
+                                        Change Role
+                                    </a>
+                                    break;
+                            }
+                        </td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
 </div>
-<a href="/AdminCategory/AddCategory/" class="btn btn-outline-dark btn-block">Add New Admin</a>
+
+
+
 

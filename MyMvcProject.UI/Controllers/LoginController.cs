@@ -1,6 +1,4 @@
 ﻿using MyMvcProject.Business.Abstract;
-using MyMvcProject.Business.Concrete;
-using MyMvcProject.DataAccess.Concrete.EntityFramework;
 using MyMvcProject.Entity.Concrete;
 using System;
 using System.Collections.Generic;
@@ -41,7 +39,8 @@ namespace MyMvcProject.UI.Controllers
             }
             else
             {
-                return RedirectToAction("Admin", "Login");
+                ModelState.AddModelError("", "Username or password is incorrect!");
+                return View();
             }
         }
 
@@ -63,7 +62,8 @@ namespace MyMvcProject.UI.Controllers
             }
             else
             {
-                return RedirectToAction("Writer", "Login");
+                ModelState.AddModelError("", "Username or password is incorrect!");
+                return View();
             }
         }
 

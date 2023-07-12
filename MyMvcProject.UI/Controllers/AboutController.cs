@@ -1,6 +1,4 @@
 ﻿using MyMvcProject.Business.Abstract;
-using MyMvcProject.Business.Concrete;
-using MyMvcProject.DataAccess.Concrete.EntityFramework;
 using MyMvcProject.Entity.Concrete;
 using System;
 using System.Collections.Generic;

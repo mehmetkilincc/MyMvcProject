@@ -16,11 +16,9 @@
             <thead>
                 <tr class="text-center">
                     <th style="width: 1%"></th>
-                    <th>Category Name</th>
-                    <th>Category Description</th>
-                    <th>Delete</th>
-                    <th>Update</th>
-                    <th>Headings</th>
+                    <th style="width: 25%">Category Name</th>
+                    <th style="width: 45%">Category Description</th>
+                    <th style="width: 20%"></thstyle="width:>
                 </tr>
             </thead>
             <tbody>
@@ -30,9 +28,23 @@
                         <th>*</th>
                         <td>@item.CategoryName</td>
                         <td>@item.CategoryDescription</td>
-                        <td><a href="/AdminCategory/DeleteCategory/@item.CategoryId" class="btn btn-danger">Delete</a></td>
-                        <td><a href="/AdminCategory/EditCategory/@item.CategoryId" class="btn btn-warning">Update</a></td>
-                        <td><a href=/AdminCategory/Headings/@item.CategoryId class="btn btn-primary">Headings</a></td>
+                        <td>
+                            <a href=/AdminCategory/Headings/@item.CategoryId class="btn btn-primary btn-sm">
+                                <i class="fas fa-folder">
+                                </i>
+                                <span>Headings   </span>
+                            </a>
+                            <a href="/AdminCategory/EditCategory/@item.CategoryId" class="btn btn-warning btn-sm">
+                                <i class="fas fa-pencil-alt">
+                                </i>
+                                <span>Edit   </span>
+                            </a>
+                            <a href="/AdminCategory/DeleteCategory/@item.CategoryId" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash">
+                                </i>
+                                <span>Delete   </span>
+                            </a>
+                        </td>
                     </tr>
                 }
             </tbody>

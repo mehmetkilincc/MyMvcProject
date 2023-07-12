@@ -5,7 +5,6 @@
 }
 
 <h2>Edit Category</h2>
-<br />
 @using (Html.BeginForm("EditCategory", "AdminCategory", FormMethod.Post))
 {
     <div class="form-group">
@@ -20,6 +19,6 @@
         @Html.ValidationMessageFor(x => x.CategoryDescription, "", new { @class = "text-danger" })
 
         <br />
-        <button class="btn btn-warning">Update</button>
+        <button class="btn btn-warning">Save Changes</button>
     </div>
 }

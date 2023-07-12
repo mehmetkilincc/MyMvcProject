@@ -48,5 +48,11 @@ namespace MyMvcProject.UI.Controllers
             _contentService.Add(content);
             return RedirectToAction("MyContent");
         }
+
+        public ActionResult ContentByHeading(int id)
+        {
+            var contents = _contentService.GetAllByHeadingId(id);
+            return View(contents);
+        }
     }
 }

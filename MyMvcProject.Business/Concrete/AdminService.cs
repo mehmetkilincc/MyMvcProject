@@ -33,7 +33,7 @@ namespace MyMvcProject.Business.Concrete
 
         public void Delete(Admin admin)
         {
-            _adminRepository.Delete(admin);
+            _adminRepository.Update(admin);
         }
 
         public void Update(Admin admin)

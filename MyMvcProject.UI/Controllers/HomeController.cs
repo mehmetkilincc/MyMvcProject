@@ -11,9 +11,17 @@ namespace MyMvcProject.UI.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private readonly IHeadingService _headingService;
+        private readonly IWriterService _writerService;
+        private readonly ICategoryService _categoryService;
+        private readonly IContentService _contentService;
+
+        public HomeController(IHeadingService headingService, IWriterService writerService, ICategoryService categoryService, IContentService contentService)
         {
-            return View();
+            _headingService = headingService;
+            _writerService = writerService;
+            _categoryService = categoryService;
+            _contentService = contentService;
         }
 
         public ActionResult About()
@@ -33,6 +41,15 @@ namespace MyMvcProject.UI.Controllers
         [AllowAnonymous]
         public ActionResult HomePage()
         {
+            var categories = _categoryService.GetAll();
+            var headings = _headingService.GetAll();
+            var writer = _writerService.GetAll();
+            var contents = _contentService.GetAll();
+
+            ViewBag.CategoryCount = categories.Count();
+            ViewBag.HeadingCount = headings.Count();
+            ViewBag.WriterCount = writer.Count();
+            ViewBag.ContentCount = contents.Count();
             return View();
         }
     }

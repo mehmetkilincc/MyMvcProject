@@ -5,9 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using FluentValidation.Results;
 using MyMvcProject.Business.Abstract;
-using MyMvcProject.Business.Concrete;
 using MyMvcProject.Business.ValidationRules.FluentValidation;
-using MyMvcProject.DataAccess.Concrete.EntityFramework;
 using MyMvcProject.Entity.Concrete;
 
 namespace MyMvcProject.UI.Controllers

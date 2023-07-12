@@ -167,6 +167,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles\AdminRoleProvider.cs" />
   </ItemGroup>
@@ -197,6 +198,8 @@
     <Content Include="AdminLTE-3.0.4\homepage\css\style.css" />
     <Content Include="AdminLTE-3.0.4\homepage\images\1.png" />
     <Content Include="AdminLTE-3.0.4\homepage\images\10.png" />
+    <Content Include="AdminLTE-3.0.4\homepage\images\11.png" />
+    <Content Include="AdminLTE-3.0.4\homepage\images\12.png" />
     <Content Include="AdminLTE-3.0.4\homepage\images\2.png" />
     <Content Include="AdminLTE-3.0.4\homepage\images\3.png" />
     <Content Include="AdminLTE-3.0.4\homepage\images\4.png" />
@@ -395,6 +398,7 @@
     <Content Include="AdminLTE-3.0.4\Images\image-61.jpg" />
     <Content Include="AdminLTE-3.0.4\Images\image-71.jpg" />
     <Content Include="AdminLTE-3.0.4\Images\image-81.jpg" />
+    <Content Include="AdminLTE-3.0.4\Images\Writer-Login.png" />
     <Content Include="AdminLTE-3.0.4\index.html" />
     <Content Include="AdminLTE-3.0.4\index2.html" />
     <Content Include="AdminLTE-3.0.4\index3.html" />
@@ -2540,10 +2544,11 @@
     <Content Include="Views\Content\Report.cshtml" />
     <Content Include="Views\Heading\Report.cshtml" />
     <Content Include="Views\AdminCategory\Headings.cshtml" />
+    <Content Include="Views\Authorization\Create.cshtml" />
+    <Content Include="Views\WriterPanelContent\ContentByHeading.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
